@@ -1,0 +1,38 @@
+---
+title: "Process Modeling and Simulation"
+---
+
+Welcome to the course website for **Process Modeling and Simulation**.
+
+This website contains the syllabus, lecture notes, assignments, examples, and resources for the course.
+
+## Course description
+
+This course introduces mathematical modeling and simulation techniques for chemical engineering processes. Students will learn how to formulate process models, solve algebraic and numerical problems, and implement simulations using computer-based tools.
+
+The course covers both fundamental and advanced topics, including thermodynamic property calculations, material and energy balances, flash calculations, reactor models, distillation, sequential-modular simulation, equation-oriented simulation, process optimization, and hybrid modeling approaches.
+
+## Main topics
+
+- Thermodynamics I: Properties and Pure Fluid
+- Thermodynamics II: Mixtures
+- Energy Balances of multicomponent systems
+- Mixer and splitter models
+- Thermodynamics III: Vapor-liquid equilibrium
+- Flash calculations I: Simplified flash calculations
+- Flash calculations II: Rigorous flash calculations
+- Distillation: Rigorous distillation calculations
+- Fixed-conversion and kinetic-based reactor models
+- Thermodynamics IV: Chemical reaction equilibrium
+- Equilibrium reactors
+- Sequential modular approach for process simulation
+- Partition and tearing methods for process simulation
+- Equation-oriented approach for process simulation
+- Process optimization
+- Hybrid modeling and machine learning for process simulation
+
+## Instructor
+
+**Instructor:** Ittisak Promma, Ph.D.  
+**Department:** Chemical Engineering
+**Office hours:** To be announced

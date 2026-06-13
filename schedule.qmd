@@ -1,0 +1,23 @@
+---
+title: "Schedule"
+---
+
+| Week | Topic | Material |
+|---:|---|---|
+| 1 | Introduction to process modeling | Lecture 1 |
+| 2 | Thermodynamics I: Properties and Pure Fluid | Lecture 2 |
+| 3 | Thermodynamics II: Mixtures | Lecture 3 |
+| 4 | Energy Balances of multicomponent systems | Lecture 4 |
+| 5 | Mixer and splitter models | Lecture 5 |
+| 6 | Thermodynamics III: Vapor-liquid equilibrium | Lecture 6 |
+| 7 | Flash calculations I: Simplified flash calculations | Lecture 7 |
+| 8 | Flash calculations II: Rigorous flash calculations | Lecture 8 |
+| 9 | Distillation: Rigorous distillation calculations | Lecture 9 |
+| 10 | Fixed-conversion and kinetic-based reactor models | Lecture 10 |
+| 11 | Thermodynamics IV: Chemical reaction equilibrium | Lecture 11 |
+| 12 | Equilibrium-based reactors | Lecture 12 |
+| 13 | Sequential modular approach for process simulation | Lecture 13 |
+| 14 | Partition and tearing methods for process simulation | Lecture 14 |
+| 15 | Equation-oriented approach for process simulation | Lecture 15 |
+| 16 | Process optimization | Lecture 16 |
+| 17 | Hybrid modeling and machine learning for process simulation |

@@ -1,0 +1,24 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  title: "Process Modeling and Simulation"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - href: syllabus.qmd
+        text: Syllabus
+      - href: schedule.qmd
+        text: Schedule
+      - href: lectures.qmd
+        text: Lectures
+      - href: resources.qmd
+        text: Resources
+
+format:
+  html:
+    theme: cosmo
+    toc: true
+    page-layout: full

@@ -1,0 +1,41 @@
+---
+title: "Lectures"
+---
+
+## Lecture notes
+
+| Lecture | Topic | Files |
+|---:|---|---|
+| 1 | Introduction to process modeling | Coming soon |
+| 2 | Thermodynamics I: Properties and Pure Fluid | Coming soon |
+| 3 | Thermodynamics II: Mixtures | Coming soon |
+| 4 | Energy Balances of multicomponent systems | Coming soon |
+| 5 | Mixer and splitter models | Coming soon |
+| 6 | Thermodynamics III: Vapor-liquid equilibrium | Coming soon |
+| 7 | Flash calculations I: Simplified flash calculations | Coming soon |
+| 8 | Flash calculations II: Rigorous flash calculations | Coming soon |
+| 9 | Distillation: Rigorous distillation calculations | Coming soon |
+| 10 | Fixed-conversion and kinetic-based reactor models | Coming soon |
+| 11 | Thermodynamics IV: Chemical reaction equilibrium | Coming soon |
+| 12 | Equilibrium-based reactors | Coming soon |
+| 13 | Sequential modular approach for process simulation | Coming soon |
+| 14 | Partition and tearing methods for process simulation | Coming soon |
+| 15 | Equation-oriented approach for process simulation | Coming soon |
+| 16 | Process optimization | Coming soon |
+| 17 | Hybrid modeling and machine learning for process simulation | Coming soon |
+
+## Example equation
+
+A simple dynamic mass balance can be written as:
+
+$$
+\frac{dC}{dt} = \frac{F}{V}(C_{in} - C) + r(C)
+$$
+
+where:
+
+- $C$ is the concentration,
+- $F$ is the flow rate,
+- $V$ is the volume,
+- $C_{in}$ is the inlet concentration,
+- $r(C)$ is the reaction rate.

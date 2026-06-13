@@ -1,0 +1,20 @@
+---
+title: "Resources"
+---
+
+## Software
+
+Students may use:
+
+- Python
+- Jupyter Notebook
+- VS Code
+- Quarto
+- Aspen Plus, if available
+
+## Useful references
+
+- Numerical methods for chemical engineers
+- Process modeling textbooks
+- Python documentation
+- Quarto documentation
