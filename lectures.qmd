@@ -7,7 +7,7 @@ title: "Lectures"
 | Lecture | Topic | Files |
 |---:|---|---|
 | 1 | Introduction to process modeling | Coming soon |
-| 2 | Thermodynamics I: Properties and Pure Fluid | Coming soon |
+| 2 | Thermodynamics I: Properties and Pure Fluid | [Lecture 1](lectures/lecture-1/lecture-1.qmd) |
 | 3 | Thermodynamics II: Mixtures | Coming soon |
 | 4 | Energy Balances of multicomponent systems | Coming soon |
 | 5 | Mixer and splitter models | Coming soon |

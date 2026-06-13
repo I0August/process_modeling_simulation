@@ -1,0 +1,70 @@
+---
+title: "Lecture 1: Thermodynamic Properties and Pure Fluids"
+subtitle: "Process Modeling and Simulation"
+---
+
+## Learning objectives
+
+By the end of this lecture, students should be able to:
+
+* Identify common thermodynamic properties used in process modeling and simulation.
+* Distinguish between extensive and intensive thermodynamic properties.
+* Explain why thermodynamic properties are state functions.
+* Define partial molar properties and chemical potential.
+* Explain why enthalpy and Gibbs free energy are important in process models.
+* Describe ideal-gas and real-fluid equations of state.
+* Explain the role of cubic equations of state in process simulation.
+
+---
+
+## 1. Thermodynamic properties
+
+Thermodynamics is a macroscopic science. It describes how observable properties of a system change and determines the direction of processes, equilibrium states, and energy exchanges without referring explicitly to individual molecules.
+
+The main thermodynamic properties used are summarized below.
+
+| Extensive property | Intensive property | Property          |
+| ------------------ | ------------------ | ----------------- |
+| --                 | $P$                | Pressure          |
+| --                 | $T$                | Temperature       |
+| $V$                | $v$                | Volume            |
+| $U$                | $u$                | Internal energy   |
+| $S$                | $s$                | Entropy           |
+| $H = U + PV$       | $h = u + Pv$       | Enthalpy          |
+| $G = H - TS$       | $g = h - Ts$       | Gibbs free energy |
+
+These properties can be classified as:
+
+* **Measurable properties:** directly obtained from instruments, such as $T$, $P$, and $V$.
+* **Fundamental properties:** appear in the basic laws and balances, such as $U$ and $S$.
+* **Derived properties:** convenient combinations of other properties, such as $H = U + PV$ and $G = H - TS$.
+
+Intensive molar properties are obtained from extensive properties using
+
+$$
+x = \frac{X}{n_T}
+$$
+
+where $X$ is an extensive property and $n_T$ is the total number of moles.
+
+::: {.callout-note}
+## Check your understanding
+
+Does temperature measure the total energy contained in a system?
+
+<details>
+<summary>Show answer</summary>
+
+**Answer:** No. If temperature measured the total energy contained in a system, then we would not need separate energy properties such as internal energy, $U$. This is a common misconception. This is a common misconception. 
+
+Temperature does not measure the total energy contained in a system because total energy also depends on the amount of material present. Instead, temperature is related to the average kinetic energy associated with molecular motion, but it does not include all contributions to the energy of a system.
+
+In microscopic terms, molecules are constantly moving through translation, rotation, and vibration. A higher temperature generally corresponds to more energetic molecular motion on average. For an ideal gas, this relationship is especially direct because temperature is proportional to the average translational kinetic energy of the molecules. However, the total energy of a real system also includes other contributions, such as intermolecular interactions and chemical bonding.
+
+When a thermometer is placed in contact with a system, energy is transferred because of the temperature difference until the thermometer and the system reach thermal equilibrium. In a liquid-in-glass thermometer, the expansion of the liquid is then used to indicate the temperature.
+</details>
+:::
+
+For now, we will treat thermodynamic properties as symbols. Their physical meaning and definitions will be discussed in more detail later.
+
+---

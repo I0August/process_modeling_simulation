@@ -12,8 +12,10 @@ website:
         text: Syllabus
       - href: schedule.qmd
         text: Schedule
-      - href: lectures.qmd
-        text: Lectures
+      - text: Lectures
+        menu:
+          - href: lectures/lecture-1/lecture-1.qmd
+            text: Lecture 1
       - href: resources.qmd
         text: Resources
 

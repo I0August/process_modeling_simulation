@@ -56,25 +56,46 @@
     "text": "Useful references\n\nNumerical methods for chemical engineers\nProcess modeling textbooks\nPython documentation\nQuarto documentation"
   },
   {
-    "objectID": "commands-notes.html",
-    "href": "commands-notes.html",
-    "title": "Useful commands",
+    "objectID": "lectures/lecture-1/lecture-1.html",
+    "href": "lectures/lecture-1/lecture-1.html",
+    "title": "Lecture 1: Thermodynamic Properties and Pure Fluids",
     "section": "",
-    "text": "Useful commands\nHow to update the website later\nEvery time you edit your site:\nquarto render git add . git commit -m “Update course website” git push\nThen GitHub Pages will update the online website."
+    "text": "By the end of this lecture, students should be able to:\n\nIdentify common thermodynamic properties used in process modeling and simulation.\nDistinguish between extensive and intensive thermodynamic properties.\nExplain why thermodynamic properties are state functions.\nDefine partial molar properties and chemical potential.\nExplain why enthalpy and Gibbs free energy are important in process models.\nDescribe ideal-gas and real-fluid equations of state.\nExplain the role of cubic equations of state in process simulation."
+  },
+  {
+    "objectID": "lectures/lecture-1/lecture-1.html#learning-objectives",
+    "href": "lectures/lecture-1/lecture-1.html#learning-objectives",
+    "title": "Lecture 1: Thermodynamic Properties and Pure Fluids",
+    "section": "",
+    "text": "By the end of this lecture, students should be able to:\n\nIdentify common thermodynamic properties used in process modeling and simulation.\nDistinguish between extensive and intensive thermodynamic properties.\nExplain why thermodynamic properties are state functions.\nDefine partial molar properties and chemical potential.\nExplain why enthalpy and Gibbs free energy are important in process models.\nDescribe ideal-gas and real-fluid equations of state.\nExplain the role of cubic equations of state in process simulation."
+  },
+  {
+    "objectID": "lectures/lecture-1/lecture-1.html#thermodynamic-properties",
+    "href": "lectures/lecture-1/lecture-1.html#thermodynamic-properties",
+    "title": "Lecture 1: Thermodynamic Properties and Pure Fluids",
+    "section": "1. Thermodynamic properties",
+    "text": "1. Thermodynamic properties\nThermodynamics is a macroscopic science. It describes how observable properties of a system change and determines the direction of processes, equilibrium states, and energy exchanges without referring explicitly to individual molecules.\nThe main thermodynamic properties used are summarized below.\n\n\n\nExtensive property\nIntensive property\nProperty\n\n\n\n\n–\n\\(P\\)\nPressure\n\n\n–\n\\(T\\)\nTemperature\n\n\n\\(V\\)\n\\(v\\)\nVolume\n\n\n\\(U\\)\n\\(u\\)\nInternal energy\n\n\n\\(S\\)\n\\(s\\)\nEntropy\n\n\n\\(H = U + PV\\)\n\\(h = u + Pv\\)\nEnthalpy\n\n\n\\(G = H - TS\\)\n\\(g = h - Ts\\)\nGibbs free energy\n\n\n\nThese properties can be classified as:\n\nMeasurable properties: directly obtained from instruments, such as \\(T\\), \\(P\\), and \\(V\\).\nFundamental properties: appear in the basic laws and balances, such as \\(U\\) and \\(S\\).\nDerived properties: convenient combinations of other properties, such as \\(H = U + PV\\) and \\(G = H - TS\\).\n\nIntensive molar properties are obtained from extensive properties using\n\\[\nx = \\frac{X}{n_T}\n\\]\nwhere \\(X\\) is an extensive property and \\(n_T\\) is the total number of moles.\n\n\n\n\n\n\nNoteCheck your understanding\n\n\n\nDoes temperature measure the total energy contained in a system?\n\n\nShow answer\n\nAnswer: No. If temperature measured the total energy contained in a system, then we would not need separate energy properties such as internal energy, \\(U\\). This is a common misconception. This is a common misconception.\nTemperature does not measure the total energy contained in a system because total energy also depends on the amount of material present. Instead, temperature is related to the average kinetic energy associated with molecular motion, but it does not include all contributions to the energy of a system.\nIn microscopic terms, molecules are constantly moving through translation, rotation, and vibration. A higher temperature generally corresponds to more energetic molecular motion on average. For an ideal gas, this relationship is especially direct because temperature is proportional to the average translational kinetic energy of the molecules. However, the total energy of a real system also includes other contributions, such as intermolecular interactions and chemical bonding.\nWhen a thermometer is placed in contact with a system, energy is transferred because of the temperature difference until the thermometer and the system reach thermal equilibrium. In a liquid-in-glass thermometer, the expansion of the liquid is then used to indicate the temperature.\n\n\n\nFor now, we will treat thermodynamic properties as symbols. Their physical meaning and definitions will be discussed in more detail later."
   },
   {
     "objectID": "lectures.html",
     "href": "lectures.html",
     "title": "Lectures",
     "section": "",
-    "text": "Lecture\nTopic\nFiles\n\n\n\n\n1\nIntroduction to process modeling\nComing soon\n\n\n2\nThermodynamics I: Properties and Pure Fluid\nComing soon\n\n\n3\nThermodynamics II: Mixtures\nComing soon\n\n\n4\nEnergy Balances of multicomponent systems\nComing soon\n\n\n5\nMixer and splitter models\nComing soon\n\n\n6\nThermodynamics III: Vapor-liquid equilibrium\nComing soon\n\n\n7\nFlash calculations I: Simplified flash calculations\nComing soon\n\n\n8\nFlash calculations II: Rigorous flash calculations\nComing soon\n\n\n9\nDistillation: Rigorous distillation calculations\nComing soon\n\n\n10\nFixed-conversion and kinetic-based reactor models\nComing soon\n\n\n11\nThermodynamics IV: Chemical reaction equilibrium\nComing soon\n\n\n12\nEquilibrium-based reactors\nComing soon\n\n\n13\nSequential modular approach for process simulation\nComing soon\n\n\n14\nPartition and tearing methods for process simulation\nComing soon\n\n\n15\nEquation-oriented approach for process simulation\nComing soon\n\n\n16\nProcess optimization\nComing soon\n\n\n17\nHybrid modeling and machine learning for process simulation\nComing soon"
+    "text": "Lecture\nTopic\nFiles\n\n\n\n\n1\nIntroduction to process modeling\nComing soon\n\n\n2\nThermodynamics I: Properties and Pure Fluid\nLecture 1\n\n\n3\nThermodynamics II: Mixtures\nComing soon\n\n\n4\nEnergy Balances of multicomponent systems\nComing soon\n\n\n5\nMixer and splitter models\nComing soon\n\n\n6\nThermodynamics III: Vapor-liquid equilibrium\nComing soon\n\n\n7\nFlash calculations I: Simplified flash calculations\nComing soon\n\n\n8\nFlash calculations II: Rigorous flash calculations\nComing soon\n\n\n9\nDistillation: Rigorous distillation calculations\nComing soon\n\n\n10\nFixed-conversion and kinetic-based reactor models\nComing soon\n\n\n11\nThermodynamics IV: Chemical reaction equilibrium\nComing soon\n\n\n12\nEquilibrium-based reactors\nComing soon\n\n\n13\nSequential modular approach for process simulation\nComing soon\n\n\n14\nPartition and tearing methods for process simulation\nComing soon\n\n\n15\nEquation-oriented approach for process simulation\nComing soon\n\n\n16\nProcess optimization\nComing soon\n\n\n17\nHybrid modeling and machine learning for process simulation\nComing soon"
   },
   {
     "objectID": "lectures.html#lecture-notes",
     "href": "lectures.html#lecture-notes",
     "title": "Lectures",
     "section": "",
-    "text": "Lecture\nTopic\nFiles\n\n\n\n\n1\nIntroduction to process modeling\nComing soon\n\n\n2\nThermodynamics I: Properties and Pure Fluid\nComing soon\n\n\n3\nThermodynamics II: Mixtures\nComing soon\n\n\n4\nEnergy Balances of multicomponent systems\nComing soon\n\n\n5\nMixer and splitter models\nComing soon\n\n\n6\nThermodynamics III: Vapor-liquid equilibrium\nComing soon\n\n\n7\nFlash calculations I: Simplified flash calculations\nComing soon\n\n\n8\nFlash calculations II: Rigorous flash calculations\nComing soon\n\n\n9\nDistillation: Rigorous distillation calculations\nComing soon\n\n\n10\nFixed-conversion and kinetic-based reactor models\nComing soon\n\n\n11\nThermodynamics IV: Chemical reaction equilibrium\nComing soon\n\n\n12\nEquilibrium-based reactors\nComing soon\n\n\n13\nSequential modular approach for process simulation\nComing soon\n\n\n14\nPartition and tearing methods for process simulation\nComing soon\n\n\n15\nEquation-oriented approach for process simulation\nComing soon\n\n\n16\nProcess optimization\nComing soon\n\n\n17\nHybrid modeling and machine learning for process simulation\nComing soon"
+    "text": "Lecture\nTopic\nFiles\n\n\n\n\n1\nIntroduction to process modeling\nComing soon\n\n\n2\nThermodynamics I: Properties and Pure Fluid\nLecture 1\n\n\n3\nThermodynamics II: Mixtures\nComing soon\n\n\n4\nEnergy Balances of multicomponent systems\nComing soon\n\n\n5\nMixer and splitter models\nComing soon\n\n\n6\nThermodynamics III: Vapor-liquid equilibrium\nComing soon\n\n\n7\nFlash calculations I: Simplified flash calculations\nComing soon\n\n\n8\nFlash calculations II: Rigorous flash calculations\nComing soon\n\n\n9\nDistillation: Rigorous distillation calculations\nComing soon\n\n\n10\nFixed-conversion and kinetic-based reactor models\nComing soon\n\n\n11\nThermodynamics IV: Chemical reaction equilibrium\nComing soon\n\n\n12\nEquilibrium-based reactors\nComing soon\n\n\n13\nSequential modular approach for process simulation\nComing soon\n\n\n14\nPartition and tearing methods for process simulation\nComing soon\n\n\n15\nEquation-oriented approach for process simulation\nComing soon\n\n\n16\nProcess optimization\nComing soon\n\n\n17\nHybrid modeling and machine learning for process simulation\nComing soon"
+  },
+  {
+    "objectID": "commands-notes.html",
+    "href": "commands-notes.html",
+    "title": "Useful commands",
+    "section": "",
+    "text": "Useful commands\nHow to update the website later\nEvery time you edit your site:\nquarto render git add . git commit -m “Update course website” git push\nThen GitHub Pages will update the online website."
   },
   {
     "objectID": "index.html",
