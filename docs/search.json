@@ -18,7 +18,7 @@
     "href": "instructor.html#education",
     "title": "Instructor",
     "section": "Education",
-    "text": "Education\nPh.D. in Chemical Engineering\nUniversity of Waterloo, Canada\nM.Eng. in Chemical Engineering Chemical Engineering Practice School (ChEPS),\nKing Mongkut’s University of Technology Thonburi, Thailand\nB.Eng. in Chemical Engineering\nKing Mongkut’s University of Technology Thonburi, Thailand"
+    "text": "Education\nPh.D. in Chemical Engineering\nUniversity of Waterloo, Canada\nM.Eng. in Chemical Engineering\nChemical Engineering Practice School (ChEPS),\nKing Mongkut’s University of Technology Thonburi, Thailand\nB.Eng. in Chemical Engineering\nKing Mongkut’s University of Technology Thonburi, Thailand"
   },
   {
     "objectID": "instructor.html#teaching-interests",
@@ -103,12 +103,5 @@
     "title": "Process Modeling and Simulation",
     "section": "Main topics",
     "text": "Main topics\n\nThermodynamics I: Properties and Pure Fluid\nThermodynamics II: Mixtures\nEnergy Balances of multicomponent systems\nMixer and splitter models\nThermodynamics III: Vapor-liquid equilibrium\nFlash calculations I: Simplified flash calculations\nFlash calculations II: Rigorous flash calculations\nDistillation: Rigorous distillation calculations\nFixed-conversion and kinetic-based reactor models\nThermodynamics IV: Chemical reaction equilibrium\nEquilibrium reactors\nSequential modular approach for process simulation\nPartition and tearing methods for process simulation\nEquation-oriented approach for process simulation\nProcess optimization\nHybrid modeling and machine learning for process simulation"
-  },
-  {
-    "objectID": "index.html#instructor",
-    "href": "index.html#instructor",
-    "title": "Process Modeling and Simulation",
-    "section": "Instructor",
-    "text": "Instructor\nInstructor: Ittisak Promma, Ph.D."
   }
 ]

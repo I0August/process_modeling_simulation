@@ -29,8 +29,4 @@ The course covers both fundamental and advanced topics, including thermodynamic 
 - Partition and tearing methods for process simulation
 - Equation-oriented approach for process simulation
 - Process optimization
-- Hybrid modeling and machine learning for process simulation
-
-## Instructor
-
-**Instructor:** Ittisak Promma, Ph.D.
+- Hybrid modeling and machine learning for process simulation  
