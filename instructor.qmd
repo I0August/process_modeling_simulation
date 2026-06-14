@@ -1,0 +1,39 @@
+---
+title: "Instructor"
+---
+
+## Ittisak Promma, Ph.D.
+
+Welcome to my instructor profile page. I teach and develop course materials in process modeling, simulation, thermodynamics, and computational methods for chemical engineering.
+
+## Education
+
+**Ph.D. in Chemical Engineering**  
+University of Waterloo, Canada  
+
+**M.Eng. in Chemical Engineering**
+Chemical Engineering Practice School (ChEPS),    
+King Mongkut's University of Technology Thonburi, Thailand
+
+**B.Eng. in Chemical Engineering**  
+King Mongkut's University of Technology Thonburi, Thailand
+
+## Teaching interests
+
+- Process modeling and simulation
+- Thermodynamics
+- Numerical methods
+- Process optimization
+- Hybrid modeling and machine learning
+
+## Research interests
+
+- Process systems engineering
+- Bioprocess modeling
+- Computational fluid dynamics-informed compartment models
+- Dynamic flux balance analysis
+- Physics-informed machine learning
+
+## Contact
+
+**Email:** itpromma@outlook.com

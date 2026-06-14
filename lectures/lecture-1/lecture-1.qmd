@@ -55,7 +55,7 @@ Does temperature measure the total energy contained in a system?
 <details>
 <summary>Show answer</summary>
 
-**Answer:** No. If temperature measured the total energy contained in a system, then we would not need separate energy properties such as internal energy, $U$. This is a common misconception. This is a common misconception. 
+**Answer:** No. If temperature measured the total energy contained in a system, then we would not need separate energy properties such as internal energy, $U$. This is a common misconception.
 
 Temperature does not measure the total energy contained in a system because total energy also depends on the amount of material present. Instead, temperature is related to the average kinetic energy associated with molecular motion, but it does not include all contributions to the energy of a system.
 
