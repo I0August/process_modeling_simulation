@@ -23,6 +23,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -70,7 +105,38 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script type="module" src="../../site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+<link href="../../site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -133,11 +199,28 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#learning-objectives" id="toc-learning-objectives" class="nav-link active" data-scroll-target="#learning-objectives">Learning objectives</a></li>
+  <li><a href="#thermodynamic-methods-for-pure-components" id="toc-thermodynamic-methods-for-pure-components" class="nav-link" data-scroll-target="#thermodynamic-methods-for-pure-components">Thermodynamic Methods for Pure Components</a></li>
+  <li><a href="#equations-of-state" id="toc-equations-of-state" class="nav-link" data-scroll-target="#equations-of-state">Equations of State</a></li>
+  <li><a href="#ideal-gas-law" id="toc-ideal-gas-law" class="nav-link" data-scroll-target="#ideal-gas-law">Ideal-Gas Law</a></li>
+  <li><a href="#real-fluid-models" id="toc-real-fluid-models" class="nav-link" data-scroll-target="#real-fluid-models">Real-Fluid Models</a></li>
+  <li><a href="#cubic-equations-of-state" id="toc-cubic-equations-of-state" class="nav-link" data-scroll-target="#cubic-equations-of-state">Cubic Equations of State</a>
+  <ul class="collapse">
+  <li><a href="#a-and-b-parameters" id="toc-a-and-b-parameters" class="nav-link" data-scroll-target="#a-and-b-parameters"><span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> Parameters</a></li>
+  <li><a href="#critical-point-conditions" id="toc-critical-point-conditions" class="nav-link" data-scroll-target="#critical-point-conditions">Critical-Point Conditions</a></li>
+  <li><a href="#application-to-the-redlichkwong-equation" id="toc-application-to-the-redlichkwong-equation" class="nav-link" data-scroll-target="#application-to-the-redlichkwong-equation">Application to the Redlich–Kwong Equation</a></li>
+  <li><a href="#example-redlichkwong-parameters-for-water" id="toc-example-redlichkwong-parameters-for-water" class="nav-link" data-scroll-target="#example-redlichkwong-parameters-for-water">Example: Redlich–Kwong Parameters for Water</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
-<main class="content column-page" id="quarto-document-content">
+<main class="content column-page-left" id="quarto-document-content">
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -147,13 +230,13 @@ ul.task-list li input[type="checkbox"] {
 
 
 
-<div class="quarto-title-meta column-page">
+<div class="quarto-title-meta column-page-left">
 
     
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">Jun 15, 2026</p>
+      <p class="date">Jun 16, 2026</p>
     </div>
   </div>
   
@@ -165,10 +248,821 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
+<section id="learning-objectives" class="level2">
+<h2 class="anchored" data-anchor-id="learning-objectives">Learning objectives</h2>
+<p>By the end of this lecture, students should be able to:</p>
+<ul>
+<li>Explain how equations of state are used to relate <span class="math inline">\(P\)</span>, <span class="math inline">\(v\)</span>, and <span class="math inline">\(T\)</span> for pure components.</li>
+<li>Describe the role of cubic equations of state in modeling real-fluid properties.</li>
+<li>Calculate pure-component thermodynamic properties such as <span class="math inline">\(h\)</span>, <span class="math inline">\(s\)</span>, and <span class="math inline">\(g\)</span> using ideal-gas and residual-property methods.</li>
+</ul>
+<hr>
+</section>
+<section id="thermodynamic-methods-for-pure-components" class="level2">
+<h2 class="anchored" data-anchor-id="thermodynamic-methods-for-pure-components">Thermodynamic Methods for Pure Components</h2>
+<p>Thermodynamic methods are the tools we use to calculate thermodynamic properties and phase-equilibrium behavior from equations of state and property models.</p>
+<p>In this section, we begin with <strong>pure components</strong>. This provides the foundation for understanding thermodynamic methods before extending them to mixtures.</p>
+<p>For a pure component, the thermodynamic state can be described using two independent properties. For example, if temperature and pressure are chosen as the independent variables, a thermodynamic property can be written as</p>
+<p><span class="math display">\[
+X = X(T,P)
+\]</span></p>
+<p>where <span class="math inline">\(X\)</span> may represent properties such as molar volume, enthalpy, entropy, internal energy, or Gibbs free energy.</p>
+<p>Therefore, if we know the temperature <span class="math inline">\(T\)</span>, the pressure <span class="math inline">\(P\)</span>, and the relationship between these variables and the property of interest, we can calculate the thermodynamic property <span class="math inline">\(X\)</span> for the system.</p>
+<p>In process simulation, a thermodynamic method commonly combines two main components: an <strong>equation of state</strong> and <strong>thermodynamic property models</strong>.</p>
+<p>An <strong>equation of state</strong> describes the relationship between measurable properties such as temperature, pressure, and volume. For example, an equation of state can be used to calculate the molar volume of a fluid from known temperature and pressure.</p>
+<p><strong>Thermodynamic property models</strong> are then used to calculate other properties, such as internal energy, enthalpy, entropy, and Gibbs free energy. These models may be based on property correlations, departure functions, or other thermodynamic relationships.</p>
+<p>Together, the equation of state and thermodynamic property models form what we will call a <strong>thermodynamic method</strong> in this course.</p>
+<p>In other words, a thermodynamic method provides a systematic way to calculate thermodynamic properties from known process conditions.</p>
+</section>
+<section id="equations-of-state" class="level2">
+<h2 class="anchored" data-anchor-id="equations-of-state">Equations of State</h2>
+<p>An <strong>equation of state</strong> (EOS) is a mathematical relationship between pressure <span class="math inline">\(P\)</span>, molar volume <span class="math inline">\(v\)</span>, and temperature <span class="math inline">\(T\)</span>. It describes how these measurable properties are related for a given substance.</p>
+<p>An equation of state can be written in different forms. For example, it may be written as a volume-explicit equation,</p>
+<p><span class="math display">\[
+v = f(T,P)
+\]</span></p>
+<p>or as a pressure-explicit equation,</p>
+<p><span class="math display">\[
+P = f(T,v)
+\]</span></p>
+<p>Both forms describe the same physical relationship, but they may be more or less convenient depending on the calculation.</p>
+</section>
+<section id="ideal-gas-law" class="level2">
+<h2 class="anchored" data-anchor-id="ideal-gas-law">Ideal-Gas Law</h2>
+<p>The simplest equation of state is the <strong>ideal-gas law</strong>:</p>
+<p><span class="math display">\[
+PV = n_TRT
+\]</span></p>
+<p>or, in terms of molar volume,</p>
+<p><span class="math display">\[
+Pv = RT
+\]</span></p>
+<p>where <span class="math inline">\(n_T\)</span> is the total number of moles and</p>
+<p><span class="math display">\[
+v = \frac{V}{n_T}
+\]</span></p>
+<p>is the molar volume.</p>
+<p>The ideal-gas model is based on two simplifying assumptions:</p>
+<ul>
+<li>Gas molecules occupy negligible volume compared with the volume of the container.</li>
+<li>There are no intermolecular forces between gas molecules.</li>
+</ul>
+<p>Under these assumptions, the ideal-gas equation provides a simple relationship between <span class="math inline">\(P\)</span>, <span class="math inline">\(v\)</span>, and <span class="math inline">\(T\)</span>.</p>
+<p>Once <span class="math inline">\(P\)</span>, <span class="math inline">\(v\)</span>, and <span class="math inline">\(T\)</span> are related through an equation of state, other thermodynamic properties can be calculated using appropriate thermodynamic relationships.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Conditions for Ideal-Gas Behavior
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<details>
+<summary>
+Show answer
+</summary>
+<p>You may be surprised that the ideal-gas law is a good approximation for many gases under low pressures (including atmospheric pressure!) and high temperatures.</p>
+<p>At low pressures, the gas molecules are far apart, so their finite volume and intermolecular forces have minimal effect on the overall behavior of the gas.</p>
+<p>At high temperatures, the kinetic energy of the molecules is much greater than the potential energy from intermolecular forces, so these forces can be neglected.</p>
+Both of these conditions lead to behavior that closely follows the ideal-gas law, making it a useful model for many practical applications in process simulation.
+</details>
+</div>
+</div>
+</section>
+<section id="real-fluid-models" class="level2">
+<h2 class="anchored" data-anchor-id="real-fluid-models">Real-Fluid Models</h2>
+<p>Real fluids do not always behave like ideal gases. Molecules occupy finite volume, and they interact with one another through attractive and repulsive forces.</p>
+<p>To measure the deviation from ideal-gas behavior, we introduce the <strong>compressibility factor</strong>:</p>
+<p><span class="math display">\[
+Z = \frac{Pv}{RT}
+\]</span></p>
+<p>For an ideal gas,</p>
+<p><span class="math display">\[
+Z = 1
+\]</span></p>
+<p>At a given temperature and pressure, the compressibility factor can also be interpreted as</p>
+<p><span class="math display">\[
+Z = \left. \frac{v}{v^{\mathrm{id}}} \right|_{T,P}
+\]</span></p>
+<p>where <span class="math inline">\(v^{\mathrm{id}}\)</span> is the molar volume predicted by the ideal-gas equation at the same temperature and pressure.</p>
+<p>Therefore, <span class="math inline">\(Z\)</span> compares the actual molar volume of a real fluid with the molar volume that the fluid would have if it behaved as an ideal gas.</p>
+<p>Common equations of state used to model real fluids include:</p>
+<ul>
+<li><strong>Virial equations of state</strong>, which are useful for gases at low to moderate pressures.</li>
+<li><strong>Cubic equations of state</strong>, which are widely used in process simulation because they can represent vapor-liquid equilibrium and critical behavior.</li>
+</ul>
+<p>In this course, we will focus mainly on <strong>cubic equations of state</strong>, since they are practical, widely used, and suitable for many process-simulation calculations.</p>
+</section>
+<section id="cubic-equations-of-state" class="level2">
+<h2 class="anchored" data-anchor-id="cubic-equations-of-state">Cubic Equations of State</h2>
+<p>Cubic equations of state are important in process simulation because they can describe both liquid and vapor phases using a single equation. They can also represent vapor-liquid equilibrium, the two-phase region, and critical behavior.</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Why are they called “cubic”?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<details>
+<summary>
+Show answer
+</summary>
+<p>Cubic equations of state are called <strong>cubic</strong> because they can be rearranged into a cubic polynomial in the molar volume (v):</p>
+<p><span class="math display">\[
+v^3 + \delta v^2 + \varepsilon v + \zeta = 0.
+\]</span></p>
+<p>Because this is a third-degree polynomial, it can have up to three real roots. In the two-phase region, these roots are typically interpreted as the molar volume of the liquid phase, the molar volume of the vapor phase, and one intermediate root that is not physically stable.</p>
+</details>
+</div>
+</div>
+<p>Compared with the ideal-gas equation of state, cubic equations of state include corrections for real-fluid behavior. These corrections account for the finite size of molecules and the attractive forces between them.</p>
+<div id="fig-water-eos" class="quarto-layout-panel">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-water-eos-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-water-eos" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-water-idg" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-water-idg-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/water_idg.png" class="img-fluid figure-img" data-ref-parent="fig-water-eos">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-water-idg-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(a) Ideal-gas EOS
+</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell-subref quarto-layout-cell" data-ref-parent="fig-water-eos" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div id="fig-water-pr" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-subfloat-fig figure">
+<div aria-describedby="fig-water-pr-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/water_PR.png" class="img-fluid figure-img" data-ref-parent="fig-water-eos">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-subfloat-caption quarto-subfloat-fig" id="fig-water-pr-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+(b) Peng–Robinson EOS
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-water-eos-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Comparison of water behaviour predicted by the ideal-gas model and the Peng–Robinson cubic EOS.
+</figcaption>
+</figure>
+</div>
+<p>A general cubic equation of state can be written in terms of the compressibility factor as</p>
+<p><span class="math display">\[
+Z = \frac{v}{v-b} - \frac{\Theta v}{\left(v^2 + \delta v + \varepsilon\right)RT}
+\]</span></p>
+<p>or in pressure-explicit form as</p>
+<p><span class="math display">\[
+P = \underbrace{\frac{RT}{v-b}}_{\text{repulsive term}} - \underbrace{\frac{\Theta}{v^2 + \delta v + \varepsilon}}_{\text{attractive term}}
+\]</span></p>
+<p>where <span class="math inline">\(b\)</span>, <span class="math inline">\(\Theta\)</span>, <span class="math inline">\(\delta\)</span>, and <span class="math inline">\(\varepsilon\)</span> are equation-of-state parameters.</p>
+<p>The first term represents the <strong>repulsive contribution</strong>. It accounts for the finite volume occupied by molecules. This effect is often called the excluded-volume or hard-core repulsion effect and is mainly represented by the parameter <span class="math inline">\(b\)</span>.</p>
+<p>The second term represents the <strong>attractive contribution</strong>. It accounts for the cohesive forces between molecules and is represented through the parameters <span class="math inline">\(\Theta\)</span>, <span class="math inline">\(\delta\)</span>, and <span class="math inline">\(\varepsilon\)</span>.</p>
+<p>Different cubic equations of state are obtained by choosing different forms for these parameters. Common examples include:</p>
+<div style="width:70%; margin:auto;">
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Equation</th>
+<th style="text-align: right;"><span class="math inline">\(\Theta\)</span></th>
+<th style="text-align: right;"><span class="math inline">\(\delta\)</span></th>
+<th style="text-align: right;"><span class="math inline">\(\varepsilon\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>van der Waals</td>
+<td style="text-align: right;"><span class="math inline">\(a\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(0\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(0\)</span></td>
+</tr>
+<tr class="even">
+<td>Redlich-Kwong</td>
+<td style="text-align: right;"><span class="math inline">\(a/\sqrt{T}\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(b\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(0\)</span></td>
+</tr>
+<tr class="odd">
+<td>Soave-Redlich-Kwong</td>
+<td style="text-align: right;"><span class="math inline">\(a(T)\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(b\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(0\)</span></td>
+</tr>
+<tr class="even">
+<td>Peng-Robinson</td>
+<td style="text-align: right;"><span class="math inline">\(a(T)\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(2b\)</span></td>
+<td style="text-align: right;"><span class="math inline">\(-b^2\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>In this course, we will focus mainly on the <strong>Soave-Redlich-Kwong</strong> and <strong>Peng-Robinson</strong> equations of state because they are widely used in chemical engineering calculations, especially for vapor-liquid equilibrium and process simulation.</p>
+<section id="a-and-b-parameters" class="level3">
+<h3 class="anchored" data-anchor-id="a-and-b-parameters"><span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> Parameters</h3>
+<p>In cubic equations of state, the parameters <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> are used to represent the attractive and repulsive contributions, respectively. One can obtainen these parameters by fitting the equation of state to experimental data.</p>
+<section id="interactive-activity-fitting-the-redlichkwong-cubic-eos" class="level4">
+<h4 class="anchored" data-anchor-id="interactive-activity-fitting-the-redlichkwong-cubic-eos">Interactive Activity: Fitting the Redlich–Kwong Cubic EOS</h4>
+<p>In this activity, we compare water <span class="math inline">\(P\)</span>-<span class="math inline">\(v\)</span> data at <span class="math inline">\(200^\circ\mathrm{C}\)</span> and <span class="math inline">\(300^\circ\mathrm{C}\)</span> with the Redlich–Kwong equation of state:</p>
+<p><span class="math display">\[
+P = \frac{RT}{v-b}
+-
+\frac{a}{\sqrt{T}\,v(v+b)}
+\]</span></p>
+<p>Here, <span class="math inline">\(T\)</span> is the temperature, <span class="math inline">\(a\)</span> controls the attractive contribution, and <span class="math inline">\(b\)</span> controls the repulsive or excluded-volume contribution.</p>
+<p>Your goal is to adjust <span class="math inline">\(T\)</span>, <span class="math inline">\(a\)</span>, and <span class="math inline">\(b\)</span> to make the predicted curve match the experimental data of the selected temperature.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb1" data-startfrom="229" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 228;"><span id="cb1-229"><a href="#cb1-229" aria-hidden="true" tabindex="-1"></a><span class="co">// Specific gas constant for water</span></span>
+<span id="cb1-230"><a href="#cb1-230" aria-hidden="true" tabindex="-1"></a><span class="co">// R = 0.4615 kPa m^3/(kg K)</span></span>
+<span id="cb1-231"><a href="#cb1-231" aria-hidden="true" tabindex="-1"></a><span class="co">//   = 0.0004615 MPa m^3/(kg K)</span></span>
+<span id="cb1-232"><a href="#cb1-232" aria-hidden="true" tabindex="-1"></a>R <span class="op">=</span> <span class="fl">0.0004615</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb2" data-startfrom="238" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 237;"><span id="cb2-238"><a href="#cb2-238" aria-hidden="true" tabindex="-1"></a>viewof T_C <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">select</span>(</span>
+<span id="cb2-239"><a href="#cb2-239" aria-hidden="true" tabindex="-1"></a>  [<span class="dv">200</span><span class="op">,</span> <span class="dv">300</span>]<span class="op">,</span></span>
+<span id="cb2-240"><a href="#cb2-240" aria-hidden="true" tabindex="-1"></a>  {</span>
+<span id="cb2-241"><a href="#cb2-241" aria-hidden="true" tabindex="-1"></a>    <span class="dt">value</span><span class="op">:</span> <span class="dv">200</span><span class="op">,</span></span>
+<span id="cb2-242"><a href="#cb2-242" aria-hidden="true" tabindex="-1"></a>    <span class="dt">label</span><span class="op">:</span> <span class="st">"Temperature, T [°C]"</span></span>
+<span id="cb2-243"><a href="#cb2-243" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb2-244"><a href="#cb2-244" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb3" data-startfrom="250" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 249;"><span id="cb3-250"><a href="#cb3-250" aria-hidden="true" tabindex="-1"></a>T <span class="op">=</span> T_C <span class="op">+</span> <span class="fl">273.15</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb4" data-startfrom="256" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 255;"><span id="cb4-256"><a href="#cb4-256" aria-hidden="true" tabindex="-1"></a>viewof a <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>(</span>
+<span id="cb4-257"><a href="#cb4-257" aria-hidden="true" tabindex="-1"></a>  [<span class="fl">0.020</span><span class="op">,</span> <span class="fl">0.070</span>]<span class="op">,</span></span>
+<span id="cb4-258"><a href="#cb4-258" aria-hidden="true" tabindex="-1"></a>  {</span>
+<span id="cb4-259"><a href="#cb4-259" aria-hidden="true" tabindex="-1"></a>    <span class="dt">value</span><span class="op">:</span> <span class="fl">0.04395</span><span class="op">,</span></span>
+<span id="cb4-260"><a href="#cb4-260" aria-hidden="true" tabindex="-1"></a>    <span class="dt">step</span><span class="op">:</span> <span class="fl">0.0001</span><span class="op">,</span></span>
+<span id="cb4-261"><a href="#cb4-261" aria-hidden="true" tabindex="-1"></a>    <span class="dt">label</span><span class="op">:</span> <span class="st">"Attractive parameter, a [MPa m⁶ K¹ᐟ²/kg²]"</span></span>
+<span id="cb4-262"><a href="#cb4-262" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb4-263"><a href="#cb4-263" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-4" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb5" data-startfrom="269" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 268;"><span id="cb5-269"><a href="#cb5-269" aria-hidden="true" tabindex="-1"></a>viewof b <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>(</span>
+<span id="cb5-270"><a href="#cb5-270" aria-hidden="true" tabindex="-1"></a>  [<span class="fl">0.0007</span><span class="op">,</span> <span class="fl">0.0016</span>]<span class="op">,</span></span>
+<span id="cb5-271"><a href="#cb5-271" aria-hidden="true" tabindex="-1"></a>  {</span>
+<span id="cb5-272"><a href="#cb5-272" aria-hidden="true" tabindex="-1"></a>    <span class="dt">value</span><span class="op">:</span> <span class="fl">0.00117</span><span class="op">,</span></span>
+<span id="cb5-273"><a href="#cb5-273" aria-hidden="true" tabindex="-1"></a>    <span class="dt">step</span><span class="op">:</span> <span class="fl">0.00001</span><span class="op">,</span></span>
+<span id="cb5-274"><a href="#cb5-274" aria-hidden="true" tabindex="-1"></a>    <span class="dt">label</span><span class="op">:</span> <span class="st">"Repulsive parameter, b [m³/kg]"</span></span>
+<span id="cb5-275"><a href="#cb5-275" aria-hidden="true" tabindex="-1"></a>  }</span>
+<span id="cb5-276"><a href="#cb5-276" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-5" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb6" data-startfrom="282" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 281;"><span id="cb6-282"><a href="#cb6-282" aria-hidden="true" tabindex="-1"></a>P_RK <span class="op">=</span> v <span class="kw">=&gt;</span> {</span>
+<span id="cb6-283"><a href="#cb6-283" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> R<span class="op">*</span>T<span class="op">/</span>(v <span class="op">-</span> b) <span class="op">-</span> a<span class="op">/</span>(<span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(T)<span class="op">*</span>v<span class="op">*</span>(v <span class="op">+</span> b))</span>
+<span id="cb6-284"><a href="#cb6-284" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-6" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb7" data-startfrom="290" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 289;"><span id="cb7-290"><a href="#cb7-290" aria-hidden="true" tabindex="-1"></a><span class="co">// Approximate water P-v data at 200 C</span></span>
+<span id="cb7-291"><a href="#cb7-291" aria-hidden="true" tabindex="-1"></a>waterData200 <span class="op">=</span> [</span>
+<span id="cb7-292"><a href="#cb7-292" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">Tlabel</span><span class="op">:</span> <span class="st">"200 C"</span><span class="op">,</span> <span class="dt">region</span><span class="op">:</span> <span class="st">"Compressed liquid"</span><span class="op">,</span> <span class="dt">v</span><span class="op">:</span> <span class="fl">0.00116</span><span class="op">,</span> <span class="dt">P</span><span class="op">:</span> <span class="dv">100</span>}<span class="op">,</span></span>
+<span id="cb7-293"><a href="#cb7-293" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">Tlabel</span><span class="op">:</span> <span class="st">"200 C"</span><span class="op">,</span> <span class="dt">region</span><span class="op">:</span> <span class="st">"Compressed liquid"</span><span class="op">,</span> <span class="dt">v</span><span class="op">:</span> <span class="fl">0.00115</span><span class="op">,</span> <span class="dt">P</span><span class="op">:</span> <span class="dv">50</span>}<span class="op">,</span></span>
+<span id="cb7-294"><a href="#cb7-294" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">Tlabel</span><span class="op">:</span> <span class="st">"200 C"</span><span class="op">,</span> <span class="dt">region</span><span class="op">:</span> <span class="st">"Compressed liquid"</span><span class="op">,</span> <span class="dt">v</span><span class="op">:</span> <span class="fl">0.00114</span><span class="op">,</span> <span class="dt">P</span><span class="op">:</span> <span class="dv">20</span>}<span class="op">,</span></span>
+<span id="cb7-295"><a href="#cb7-295" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">Tlabel</span><span class="op">:</span> <span class="st">"200 C"</span><span class="op">,</span> <span class="dt">region</span><span class="op">:</span> <span class="st">"Compressed liquid"</span><span class="op">,</span> <span class="dt">v</span><span class="op">:</span> <span class="fl">0.00116</span><span class="op">,</span> <span class="dt">P</span><span class="op">:</span> <span class="dv">10</span>}<span class="op">,</span></span>
+<span id="cb7-296"><a href="#cb7-296" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">Tlabel</span><span class="op">:</span> <span class="st">"200 C"</span><span class="op">,</span> <span class="dt">region</span><span class="op">:</span> <span class="st">"Compressed liquid"</span><span class="op">,</span> <span class="dt">v</span><span class="op">:</span> <span class="fl">0.00116</span><span class="op">,</span> <span class="dt">P</span><span class="op">:</span> <span class="dv">5</span>}<span class="op">,</span></span>
+<span id="cb7-297"><a href="#cb7-297" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-298"><a href="#cb7-298" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">Tlabel</span><span class="op">:</span> <span class="st">"200 C"</span><span class="op">,</span> <span class="dt">region</span><span class="op">:</span> <span class="st">"Saturated liquid"</span><span class="op">,</span> <span class="dt">v</span><span class="op">:</span> <span class="fl">0.001157</span><span class="op">,</span> <span class="dt">P</span><span class="op">:</span> <span class="fl">1.5549</span>}<span class="op">,</span></span>
+<span id="cb7-299"><a href="#cb7-299" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">Tlabel</span><span class="op">:</span> <span class="st">"200 C"</span><span class="op">,</span> <span class="dt">region</span><span class="op">:</span> <span class="st">"Saturated vapor"</span><span class="op">,</span> <span class="dt">v</span><span class="op">:</span> <span class="fl">0.1274</span><span class="op">,</span> <span class="dt">P</span><span class="op">:</span> <span class="fl">1.5549</span>}<span class="op">,</span></span>
+<span id="cb7-300"><a href="#cb7-300" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-301"><a href="#cb7-301" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">Tlabel</span><span class="op">:</span> <span class="st">"200 C"</span><span class="op">,</span> <span class="dt">region</span><span class="op">:</span> <span class="st">"Superheated vapor"</span><span class="op">,</span> <span class="dt">v</span><span class="op">:</span> <span class="fl">0.132</span><span class="op">,</span> <span class="dt">P</span><span class="op">:</span> <span class="fl">1.5</span>}<span class="op">,</span></span>
+<span id="cb7-302"><a href="#cb7-302" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">Tlabel</span><span class="op">:</span> <span class="st">"200 C"</span><span class="op">,</span> <span class="dt">region</span><span class="op">:</span> <span class="st">"Superheated vapor"</span><span class="op">,</span> <span class="dt">v</span><span class="op">:</span> <span class="fl">0.206</span><span class="op">,</span> <span class="dt">P</span><span class="op">:</span> <span class="fl">1.0</span>}<span class="op">,</span></span>
+<span id="cb7-303"><a href="#cb7-303" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">Tlabel</span><span class="op">:</span> <span class="st">"200 C"</span><span class="op">,</span> <span class="dt">region</span><span class="op">:</span> <span class="st">"Superheated vapor"</span><span class="op">,</span> <span class="dt">v</span><span class="op">:</span> <span class="fl">0.425</span><span class="op">,</span> <span class="dt">P</span><span class="op">:</span> <span class="fl">0.5</span>}<span class="op">,</span></span>
+<span id="cb7-304"><a href="#cb7-304" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">Tlabel</span><span class="op">:</span> <span class="st">"200 C"</span><span class="op">,</span> <span class="dt">region</span><span class="op">:</span> <span class="st">"Superheated vapor"</span><span class="op">,</span> <span class="dt">v</span><span class="op">:</span> <span class="fl">1.080</span><span class="op">,</span> <span class="dt">P</span><span class="op">:</span> <span class="fl">0.2</span>}<span class="op">,</span></span>
+<span id="cb7-305"><a href="#cb7-305" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">Tlabel</span><span class="op">:</span> <span class="st">"200 C"</span><span class="op">,</span> <span class="dt">region</span><span class="op">:</span> <span class="st">"Superheated vapor"</span><span class="op">,</span> <span class="dt">v</span><span class="op">:</span> <span class="fl">2.172</span><span class="op">,</span> <span class="dt">P</span><span class="op">:</span> <span class="fl">0.1</span>}<span class="op">,</span></span>
+<span id="cb7-306"><a href="#cb7-306" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">Tlabel</span><span class="op">:</span> <span class="st">"200 C"</span><span class="op">,</span> <span class="dt">region</span><span class="op">:</span> <span class="st">"Superheated vapor"</span><span class="op">,</span> <span class="dt">v</span><span class="op">:</span> <span class="fl">4.36</span><span class="op">,</span> <span class="dt">P</span><span class="op">:</span> <span class="fl">0.05</span>}</span>
+<span id="cb7-307"><a href="#cb7-307" aria-hidden="true" tabindex="-1"></a>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-7" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb8" data-startfrom="316" data-source-offset="-40"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 315;"><span id="cb8-316"><a href="#cb8-316" aria-hidden="true" tabindex="-1"></a>waterData300 <span class="op">=</span> [</span>
+<span id="cb8-317"><a href="#cb8-317" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">Tlabel</span><span class="op">:</span> <span class="st">"300 C"</span><span class="op">,</span> <span class="dt">region</span><span class="op">:</span> <span class="st">"Compressed liquid"</span><span class="op">,</span> <span class="dt">v</span><span class="op">:</span> <span class="fl">0.00138</span><span class="op">,</span> <span class="dt">P</span><span class="op">:</span> <span class="dv">100</span>}<span class="op">,</span></span>
+<span id="cb8-318"><a href="#cb8-318" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">Tlabel</span><span class="op">:</span> <span class="st">"300 C"</span><span class="op">,</span> <span class="dt">region</span><span class="op">:</span> <span class="st">"Compressed liquid"</span><span class="op">,</span> <span class="dt">v</span><span class="op">:</span> <span class="fl">0.00139</span><span class="op">,</span> <span class="dt">P</span><span class="op">:</span> <span class="dv">50</span>}<span class="op">,</span></span>
+<span id="cb8-319"><a href="#cb8-319" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">Tlabel</span><span class="op">:</span> <span class="st">"300 C"</span><span class="op">,</span> <span class="dt">region</span><span class="op">:</span> <span class="st">"Compressed liquid"</span><span class="op">,</span> <span class="dt">v</span><span class="op">:</span> <span class="fl">0.00140</span><span class="op">,</span> <span class="dt">P</span><span class="op">:</span> <span class="dv">20</span>}<span class="op">,</span></span>
+<span id="cb8-320"><a href="#cb8-320" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">Tlabel</span><span class="op">:</span> <span class="st">"300 C"</span><span class="op">,</span> <span class="dt">region</span><span class="op">:</span> <span class="st">"Compressed liquid"</span><span class="op">,</span> <span class="dt">v</span><span class="op">:</span> <span class="fl">0.00140</span><span class="op">,</span> <span class="dt">P</span><span class="op">:</span> <span class="dv">10</span>}<span class="op">,</span></span>
+<span id="cb8-321"><a href="#cb8-321" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-322"><a href="#cb8-322" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">Tlabel</span><span class="op">:</span> <span class="st">"300 C"</span><span class="op">,</span> <span class="dt">region</span><span class="op">:</span> <span class="st">"Saturated liquid"</span><span class="op">,</span> <span class="dt">v</span><span class="op">:</span> <span class="fl">0.001404</span><span class="op">,</span> <span class="dt">P</span><span class="op">:</span> <span class="fl">8.588</span>}<span class="op">,</span></span>
+<span id="cb8-323"><a href="#cb8-323" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">Tlabel</span><span class="op">:</span> <span class="st">"300 C"</span><span class="op">,</span> <span class="dt">region</span><span class="op">:</span> <span class="st">"Saturated vapor"</span><span class="op">,</span> <span class="dt">v</span><span class="op">:</span> <span class="fl">0.0217</span><span class="op">,</span> <span class="dt">P</span><span class="op">:</span> <span class="fl">8.588</span>}<span class="op">,</span></span>
+<span id="cb8-324"><a href="#cb8-324" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-325"><a href="#cb8-325" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">Tlabel</span><span class="op">:</span> <span class="st">"300 C"</span><span class="op">,</span> <span class="dt">region</span><span class="op">:</span> <span class="st">"Superheated vapor"</span><span class="op">,</span> <span class="dt">v</span><span class="op">:</span> <span class="fl">0.026</span><span class="op">,</span> <span class="dt">P</span><span class="op">:</span> <span class="fl">8.0</span>}<span class="op">,</span></span>
+<span id="cb8-326"><a href="#cb8-326" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">Tlabel</span><span class="op">:</span> <span class="st">"300 C"</span><span class="op">,</span> <span class="dt">region</span><span class="op">:</span> <span class="st">"Superheated vapor"</span><span class="op">,</span> <span class="dt">v</span><span class="op">:</span> <span class="fl">0.045</span><span class="op">,</span> <span class="dt">P</span><span class="op">:</span> <span class="fl">5.0</span>}<span class="op">,</span></span>
+<span id="cb8-327"><a href="#cb8-327" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">Tlabel</span><span class="op">:</span> <span class="st">"300 C"</span><span class="op">,</span> <span class="dt">region</span><span class="op">:</span> <span class="st">"Superheated vapor"</span><span class="op">,</span> <span class="dt">v</span><span class="op">:</span> <span class="fl">0.132</span><span class="op">,</span> <span class="dt">P</span><span class="op">:</span> <span class="fl">2.0</span>}<span class="op">,</span></span>
+<span id="cb8-328"><a href="#cb8-328" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">Tlabel</span><span class="op">:</span> <span class="st">"300 C"</span><span class="op">,</span> <span class="dt">region</span><span class="op">:</span> <span class="st">"Superheated vapor"</span><span class="op">,</span> <span class="dt">v</span><span class="op">:</span> <span class="fl">0.265</span><span class="op">,</span> <span class="dt">P</span><span class="op">:</span> <span class="fl">1.0</span>}<span class="op">,</span></span>
+<span id="cb8-329"><a href="#cb8-329" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">Tlabel</span><span class="op">:</span> <span class="st">"300 C"</span><span class="op">,</span> <span class="dt">region</span><span class="op">:</span> <span class="st">"Superheated vapor"</span><span class="op">,</span> <span class="dt">v</span><span class="op">:</span> <span class="fl">0.529</span><span class="op">,</span> <span class="dt">P</span><span class="op">:</span> <span class="fl">0.5</span>}<span class="op">,</span></span>
+<span id="cb8-330"><a href="#cb8-330" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">Tlabel</span><span class="op">:</span> <span class="st">"300 C"</span><span class="op">,</span> <span class="dt">region</span><span class="op">:</span> <span class="st">"Superheated vapor"</span><span class="op">,</span> <span class="dt">v</span><span class="op">:</span> <span class="fl">1.323</span><span class="op">,</span> <span class="dt">P</span><span class="op">:</span> <span class="fl">0.2</span>}</span>
+<span id="cb8-331"><a href="#cb8-331" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb8-332"><a href="#cb8-332" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-333"><a href="#cb8-333" aria-hidden="true" tabindex="-1"></a>waterData <span class="op">=</span> waterData200<span class="op">.</span><span class="fu">concat</span>(waterData300)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-8-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-8-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb9" data-startfrom="340" data-source-offset="-42"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 339;"><span id="cb9-340"><a href="#cb9-340" aria-hidden="true" tabindex="-1"></a>satLiquid <span class="op">=</span> [</span>
+<span id="cb9-341"><a href="#cb9-341" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">T</span><span class="op">:</span> <span class="dv">100</span><span class="op">,</span> <span class="dt">P</span><span class="op">:</span> <span class="fl">0.1013</span><span class="op">,</span> <span class="dt">v</span><span class="op">:</span> <span class="fl">0.001043</span>}<span class="op">,</span></span>
+<span id="cb9-342"><a href="#cb9-342" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">T</span><span class="op">:</span> <span class="dv">120</span><span class="op">,</span> <span class="dt">P</span><span class="op">:</span> <span class="fl">0.1985</span><span class="op">,</span> <span class="dt">v</span><span class="op">:</span> <span class="fl">0.001060</span>}<span class="op">,</span></span>
+<span id="cb9-343"><a href="#cb9-343" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">T</span><span class="op">:</span> <span class="dv">140</span><span class="op">,</span> <span class="dt">P</span><span class="op">:</span> <span class="fl">0.3615</span><span class="op">,</span> <span class="dt">v</span><span class="op">:</span> <span class="fl">0.001080</span>}<span class="op">,</span></span>
+<span id="cb9-344"><a href="#cb9-344" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">T</span><span class="op">:</span> <span class="dv">160</span><span class="op">,</span> <span class="dt">P</span><span class="op">:</span> <span class="fl">0.6182</span><span class="op">,</span> <span class="dt">v</span><span class="op">:</span> <span class="fl">0.001102</span>}<span class="op">,</span></span>
+<span id="cb9-345"><a href="#cb9-345" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">T</span><span class="op">:</span> <span class="dv">180</span><span class="op">,</span> <span class="dt">P</span><span class="op">:</span> <span class="fl">1.002</span><span class="op">,</span>  <span class="dt">v</span><span class="op">:</span> <span class="fl">0.001127</span>}<span class="op">,</span></span>
+<span id="cb9-346"><a href="#cb9-346" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">T</span><span class="op">:</span> <span class="dv">200</span><span class="op">,</span> <span class="dt">P</span><span class="op">:</span> <span class="fl">1.5549</span><span class="op">,</span> <span class="dt">v</span><span class="op">:</span> <span class="fl">0.001157</span>}<span class="op">,</span></span>
+<span id="cb9-347"><a href="#cb9-347" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">T</span><span class="op">:</span> <span class="dv">220</span><span class="op">,</span> <span class="dt">P</span><span class="op">:</span> <span class="fl">2.320</span><span class="op">,</span>  <span class="dt">v</span><span class="op">:</span> <span class="fl">0.001190</span>}<span class="op">,</span></span>
+<span id="cb9-348"><a href="#cb9-348" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">T</span><span class="op">:</span> <span class="dv">240</span><span class="op">,</span> <span class="dt">P</span><span class="op">:</span> <span class="fl">3.345</span><span class="op">,</span>  <span class="dt">v</span><span class="op">:</span> <span class="fl">0.001229</span>}<span class="op">,</span></span>
+<span id="cb9-349"><a href="#cb9-349" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">T</span><span class="op">:</span> <span class="dv">260</span><span class="op">,</span> <span class="dt">P</span><span class="op">:</span> <span class="fl">4.692</span><span class="op">,</span>  <span class="dt">v</span><span class="op">:</span> <span class="fl">0.001276</span>}<span class="op">,</span></span>
+<span id="cb9-350"><a href="#cb9-350" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">T</span><span class="op">:</span> <span class="dv">280</span><span class="op">,</span> <span class="dt">P</span><span class="op">:</span> <span class="fl">6.418</span><span class="op">,</span>  <span class="dt">v</span><span class="op">:</span> <span class="fl">0.001333</span>}<span class="op">,</span></span>
+<span id="cb9-351"><a href="#cb9-351" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">T</span><span class="op">:</span> <span class="dv">300</span><span class="op">,</span> <span class="dt">P</span><span class="op">:</span> <span class="fl">8.588</span><span class="op">,</span>  <span class="dt">v</span><span class="op">:</span> <span class="fl">0.001404</span>}<span class="op">,</span></span>
+<span id="cb9-352"><a href="#cb9-352" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">T</span><span class="op">:</span> <span class="dv">320</span><span class="op">,</span> <span class="dt">P</span><span class="op">:</span> <span class="fl">11.28</span><span class="op">,</span>  <span class="dt">v</span><span class="op">:</span> <span class="fl">0.001499</span>}<span class="op">,</span></span>
+<span id="cb9-353"><a href="#cb9-353" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">T</span><span class="op">:</span> <span class="dv">340</span><span class="op">,</span> <span class="dt">P</span><span class="op">:</span> <span class="fl">14.60</span><span class="op">,</span>  <span class="dt">v</span><span class="op">:</span> <span class="fl">0.001638</span>}<span class="op">,</span></span>
+<span id="cb9-354"><a href="#cb9-354" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">T</span><span class="op">:</span> <span class="dv">360</span><span class="op">,</span> <span class="dt">P</span><span class="op">:</span> <span class="fl">18.67</span><span class="op">,</span>  <span class="dt">v</span><span class="op">:</span> <span class="fl">0.001895</span>}<span class="op">,</span></span>
+<span id="cb9-355"><a href="#cb9-355" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">T</span><span class="op">:</span> <span class="dv">374</span><span class="op">,</span> <span class="dt">P</span><span class="op">:</span> <span class="fl">22.064</span><span class="op">,</span> <span class="dt">v</span><span class="op">:</span> <span class="fl">0.003106</span>}</span>
+<span id="cb9-356"><a href="#cb9-356" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb9-357"><a href="#cb9-357" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-358"><a href="#cb9-358" aria-hidden="true" tabindex="-1"></a>satVapor <span class="op">=</span> [</span>
+<span id="cb9-359"><a href="#cb9-359" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">T</span><span class="op">:</span> <span class="dv">100</span><span class="op">,</span> <span class="dt">P</span><span class="op">:</span> <span class="fl">0.1013</span><span class="op">,</span> <span class="dt">v</span><span class="op">:</span> <span class="fl">1.694</span>}<span class="op">,</span></span>
+<span id="cb9-360"><a href="#cb9-360" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">T</span><span class="op">:</span> <span class="dv">120</span><span class="op">,</span> <span class="dt">P</span><span class="op">:</span> <span class="fl">0.1985</span><span class="op">,</span> <span class="dt">v</span><span class="op">:</span> <span class="fl">0.8919</span>}<span class="op">,</span></span>
+<span id="cb9-361"><a href="#cb9-361" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">T</span><span class="op">:</span> <span class="dv">140</span><span class="op">,</span> <span class="dt">P</span><span class="op">:</span> <span class="fl">0.3615</span><span class="op">,</span> <span class="dt">v</span><span class="op">:</span> <span class="fl">0.5089</span>}<span class="op">,</span></span>
+<span id="cb9-362"><a href="#cb9-362" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">T</span><span class="op">:</span> <span class="dv">160</span><span class="op">,</span> <span class="dt">P</span><span class="op">:</span> <span class="fl">0.6182</span><span class="op">,</span> <span class="dt">v</span><span class="op">:</span> <span class="fl">0.3068</span>}<span class="op">,</span></span>
+<span id="cb9-363"><a href="#cb9-363" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">T</span><span class="op">:</span> <span class="dv">180</span><span class="op">,</span> <span class="dt">P</span><span class="op">:</span> <span class="fl">1.002</span><span class="op">,</span>  <span class="dt">v</span><span class="op">:</span> <span class="fl">0.1941</span>}<span class="op">,</span></span>
+<span id="cb9-364"><a href="#cb9-364" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">T</span><span class="op">:</span> <span class="dv">200</span><span class="op">,</span> <span class="dt">P</span><span class="op">:</span> <span class="fl">1.5549</span><span class="op">,</span> <span class="dt">v</span><span class="op">:</span> <span class="fl">0.1274</span>}<span class="op">,</span></span>
+<span id="cb9-365"><a href="#cb9-365" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">T</span><span class="op">:</span> <span class="dv">220</span><span class="op">,</span> <span class="dt">P</span><span class="op">:</span> <span class="fl">2.320</span><span class="op">,</span>  <span class="dt">v</span><span class="op">:</span> <span class="fl">0.0861</span>}<span class="op">,</span></span>
+<span id="cb9-366"><a href="#cb9-366" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">T</span><span class="op">:</span> <span class="dv">240</span><span class="op">,</span> <span class="dt">P</span><span class="op">:</span> <span class="fl">3.345</span><span class="op">,</span>  <span class="dt">v</span><span class="op">:</span> <span class="fl">0.0602</span>}<span class="op">,</span></span>
+<span id="cb9-367"><a href="#cb9-367" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">T</span><span class="op">:</span> <span class="dv">260</span><span class="op">,</span> <span class="dt">P</span><span class="op">:</span> <span class="fl">4.692</span><span class="op">,</span>  <span class="dt">v</span><span class="op">:</span> <span class="fl">0.0434</span>}<span class="op">,</span></span>
+<span id="cb9-368"><a href="#cb9-368" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">T</span><span class="op">:</span> <span class="dv">280</span><span class="op">,</span> <span class="dt">P</span><span class="op">:</span> <span class="fl">6.418</span><span class="op">,</span>  <span class="dt">v</span><span class="op">:</span> <span class="fl">0.0317</span>}<span class="op">,</span></span>
+<span id="cb9-369"><a href="#cb9-369" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">T</span><span class="op">:</span> <span class="dv">300</span><span class="op">,</span> <span class="dt">P</span><span class="op">:</span> <span class="fl">8.588</span><span class="op">,</span>  <span class="dt">v</span><span class="op">:</span> <span class="fl">0.0217</span>}<span class="op">,</span></span>
+<span id="cb9-370"><a href="#cb9-370" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">T</span><span class="op">:</span> <span class="dv">320</span><span class="op">,</span> <span class="dt">P</span><span class="op">:</span> <span class="fl">11.28</span><span class="op">,</span>  <span class="dt">v</span><span class="op">:</span> <span class="fl">0.0155</span>}<span class="op">,</span></span>
+<span id="cb9-371"><a href="#cb9-371" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">T</span><span class="op">:</span> <span class="dv">340</span><span class="op">,</span> <span class="dt">P</span><span class="op">:</span> <span class="fl">14.60</span><span class="op">,</span>  <span class="dt">v</span><span class="op">:</span> <span class="fl">0.0108</span>}<span class="op">,</span></span>
+<span id="cb9-372"><a href="#cb9-372" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">T</span><span class="op">:</span> <span class="dv">360</span><span class="op">,</span> <span class="dt">P</span><span class="op">:</span> <span class="fl">18.67</span><span class="op">,</span>  <span class="dt">v</span><span class="op">:</span> <span class="fl">0.00695</span>}<span class="op">,</span></span>
+<span id="cb9-373"><a href="#cb9-373" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">T</span><span class="op">:</span> <span class="dv">374</span><span class="op">,</span> <span class="dt">P</span><span class="op">:</span> <span class="fl">22.064</span><span class="op">,</span> <span class="dt">v</span><span class="op">:</span> <span class="fl">0.003106</span>}</span>
+<span id="cb9-374"><a href="#cb9-374" aria-hidden="true" tabindex="-1"></a>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-9-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-9-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb10" data-startfrom="380" data-source-offset="-1"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 379;"><span id="cb10-380"><a href="#cb10-380" aria-hidden="true" tabindex="-1"></a>satLine200 <span class="op">=</span> [</span>
+<span id="cb10-381"><a href="#cb10-381" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">v</span><span class="op">:</span> <span class="fl">0.001157</span><span class="op">,</span> <span class="dt">P</span><span class="op">:</span> <span class="fl">1.5549</span>}<span class="op">,</span></span>
+<span id="cb10-382"><a href="#cb10-382" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">v</span><span class="op">:</span> <span class="fl">0.1274</span><span class="op">,</span> <span class="dt">P</span><span class="op">:</span> <span class="fl">1.5549</span>}</span>
+<span id="cb10-383"><a href="#cb10-383" aria-hidden="true" tabindex="-1"></a>]</span>
+<span id="cb10-384"><a href="#cb10-384" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-385"><a href="#cb10-385" aria-hidden="true" tabindex="-1"></a>satLine300 <span class="op">=</span> [</span>
+<span id="cb10-386"><a href="#cb10-386" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">v</span><span class="op">:</span> <span class="fl">0.001404</span><span class="op">,</span> <span class="dt">P</span><span class="op">:</span> <span class="fl">8.588</span>}<span class="op">,</span></span>
+<span id="cb10-387"><a href="#cb10-387" aria-hidden="true" tabindex="-1"></a>  {<span class="dt">v</span><span class="op">:</span> <span class="fl">0.0217</span><span class="op">,</span> <span class="dt">P</span><span class="op">:</span> <span class="fl">8.588</span>}</span>
+<span id="cb10-388"><a href="#cb10-388" aria-hidden="true" tabindex="-1"></a>]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-10-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-10-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb11" data-startfrom="397" data-source-offset="-95"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 396;"><span id="cb11-397"><a href="#cb11-397" aria-hidden="true" tabindex="-1"></a>liquidBranch <span class="op">=</span> <span class="bu">Array</span><span class="op">.</span><span class="fu">from</span>({<span class="dt">length</span><span class="op">:</span> <span class="dv">2500</span>}<span class="op">,</span> (_<span class="op">,</span> i) <span class="kw">=&gt;</span> {</span>
+<span id="cb11-398"><a href="#cb11-398" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> logMin <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">log10</span>(<span class="bu">Math</span><span class="op">.</span><span class="fu">max</span>(<span class="fl">1.01</span><span class="op">*</span>b<span class="op">,</span> <span class="fl">8e-4</span>))</span>
+<span id="cb11-399"><a href="#cb11-399" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> logMax <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">log10</span>(<span class="fl">0.02</span>)</span>
+<span id="cb11-400"><a href="#cb11-400" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> v <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">pow</span>(<span class="dv">10</span><span class="op">,</span> logMin <span class="op">+</span> i<span class="op">*</span>(logMax <span class="op">-</span> logMin)<span class="op">/</span><span class="dv">2499</span>)</span>
+<span id="cb11-401"><a href="#cb11-401" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> {<span class="dt">v</span><span class="op">:</span> v<span class="op">,</span> <span class="dt">P</span><span class="op">:</span> <span class="fu">P_RK</span>(v)}</span>
+<span id="cb11-402"><a href="#cb11-402" aria-hidden="true" tabindex="-1"></a>})<span class="op">.</span><span class="fu">filter</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">P</span> <span class="op">&gt;</span> <span class="fl">0.01</span> <span class="op">&amp;&amp;</span> d<span class="op">.</span><span class="at">P</span> <span class="op">&lt;</span> <span class="dv">120</span> <span class="op">&amp;&amp;</span> <span class="bu">Number</span><span class="op">.</span><span class="fu">isFinite</span>(d<span class="op">.</span><span class="at">P</span>))</span>
+<span id="cb11-403"><a href="#cb11-403" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-404"><a href="#cb11-404" aria-hidden="true" tabindex="-1"></a>vaporBranch <span class="op">=</span> <span class="bu">Array</span><span class="op">.</span><span class="fu">from</span>({<span class="dt">length</span><span class="op">:</span> <span class="dv">2500</span>}<span class="op">,</span> (_<span class="op">,</span> i) <span class="kw">=&gt;</span> {</span>
+<span id="cb11-405"><a href="#cb11-405" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> logMin <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">log10</span>(<span class="fl">0.02</span>)</span>
+<span id="cb11-406"><a href="#cb11-406" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> logMax <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">log10</span>(<span class="dv">20</span>)</span>
+<span id="cb11-407"><a href="#cb11-407" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> v <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">pow</span>(<span class="dv">10</span><span class="op">,</span> logMin <span class="op">+</span> i<span class="op">*</span>(logMax <span class="op">-</span> logMin)<span class="op">/</span><span class="dv">2499</span>)</span>
+<span id="cb11-408"><a href="#cb11-408" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> {<span class="dt">v</span><span class="op">:</span> v<span class="op">,</span> <span class="dt">P</span><span class="op">:</span> <span class="fu">P_RK</span>(v)}</span>
+<span id="cb11-409"><a href="#cb11-409" aria-hidden="true" tabindex="-1"></a>})<span class="op">.</span><span class="fu">filter</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">P</span> <span class="op">&gt;</span> <span class="fl">0.01</span> <span class="op">&amp;&amp;</span> d<span class="op">.</span><span class="at">P</span> <span class="op">&lt;</span> <span class="dv">120</span> <span class="op">&amp;&amp;</span> <span class="bu">Number</span><span class="op">.</span><span class="fu">isFinite</span>(d<span class="op">.</span><span class="at">P</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-11-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-11-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code hidden" id="cb12" data-startfrom="413" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line 412;"><span id="cb12-413"><a href="#cb12-413" aria-hidden="true" tabindex="-1"></a>Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb12-414"><a href="#cb12-414" aria-hidden="true" tabindex="-1"></a>  <span class="dt">width</span><span class="op">:</span> <span class="dv">900</span><span class="op">,</span></span>
+<span id="cb12-415"><a href="#cb12-415" aria-hidden="true" tabindex="-1"></a>  <span class="dt">height</span><span class="op">:</span> <span class="dv">650</span><span class="op">,</span></span>
+<span id="cb12-416"><a href="#cb12-416" aria-hidden="true" tabindex="-1"></a>  <span class="dt">grid</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span></span>
+<span id="cb12-417"><a href="#cb12-417" aria-hidden="true" tabindex="-1"></a>  <span class="dt">x</span><span class="op">:</span> {</span>
+<span id="cb12-418"><a href="#cb12-418" aria-hidden="true" tabindex="-1"></a>    <span class="dt">type</span><span class="op">:</span> <span class="st">"log"</span><span class="op">,</span></span>
+<span id="cb12-419"><a href="#cb12-419" aria-hidden="true" tabindex="-1"></a>    <span class="dt">label</span><span class="op">:</span> <span class="st">"Specific volume, v [m³/kg]"</span><span class="op">,</span></span>
+<span id="cb12-420"><a href="#cb12-420" aria-hidden="true" tabindex="-1"></a>    <span class="dt">domain</span><span class="op">:</span> [<span class="fl">8e-4</span><span class="op">,</span> <span class="dv">20</span>]</span>
+<span id="cb12-421"><a href="#cb12-421" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span></span>
+<span id="cb12-422"><a href="#cb12-422" aria-hidden="true" tabindex="-1"></a>  <span class="dt">y</span><span class="op">:</span> {</span>
+<span id="cb12-423"><a href="#cb12-423" aria-hidden="true" tabindex="-1"></a>    <span class="dt">type</span><span class="op">:</span> <span class="st">"log"</span><span class="op">,</span></span>
+<span id="cb12-424"><a href="#cb12-424" aria-hidden="true" tabindex="-1"></a>    <span class="dt">label</span><span class="op">:</span> <span class="st">"Pressure, P [MPa]"</span><span class="op">,</span></span>
+<span id="cb12-425"><a href="#cb12-425" aria-hidden="true" tabindex="-1"></a>    <span class="dt">domain</span><span class="op">:</span> [<span class="fl">0.01</span><span class="op">,</span> <span class="dv">120</span>]</span>
+<span id="cb12-426"><a href="#cb12-426" aria-hidden="true" tabindex="-1"></a>  }<span class="op">,</span></span>
+<span id="cb12-427"><a href="#cb12-427" aria-hidden="true" tabindex="-1"></a>  <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb12-428"><a href="#cb12-428" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Saturation dome</span></span>
+<span id="cb12-429"><a href="#cb12-429" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">line</span>(satLiquid<span class="op">,</span> {</span>
+<span id="cb12-430"><a href="#cb12-430" aria-hidden="true" tabindex="-1"></a>      <span class="dt">x</span><span class="op">:</span> <span class="st">"v"</span><span class="op">,</span></span>
+<span id="cb12-431"><a href="#cb12-431" aria-hidden="true" tabindex="-1"></a>      <span class="dt">y</span><span class="op">:</span> <span class="st">"P"</span><span class="op">,</span></span>
+<span id="cb12-432"><a href="#cb12-432" aria-hidden="true" tabindex="-1"></a>      <span class="dt">stroke</span><span class="op">:</span> <span class="st">"black"</span><span class="op">,</span></span>
+<span id="cb12-433"><a href="#cb12-433" aria-hidden="true" tabindex="-1"></a>      <span class="dt">strokeDasharray</span><span class="op">:</span> <span class="st">"5,4"</span><span class="op">,</span></span>
+<span id="cb12-434"><a href="#cb12-434" aria-hidden="true" tabindex="-1"></a>      <span class="dt">strokeWidth</span><span class="op">:</span> <span class="fl">1.5</span></span>
+<span id="cb12-435"><a href="#cb12-435" aria-hidden="true" tabindex="-1"></a>    })<span class="op">,</span></span>
+<span id="cb12-436"><a href="#cb12-436" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-437"><a href="#cb12-437" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">line</span>(satVapor<span class="op">,</span> {</span>
+<span id="cb12-438"><a href="#cb12-438" aria-hidden="true" tabindex="-1"></a>      <span class="dt">x</span><span class="op">:</span> <span class="st">"v"</span><span class="op">,</span></span>
+<span id="cb12-439"><a href="#cb12-439" aria-hidden="true" tabindex="-1"></a>      <span class="dt">y</span><span class="op">:</span> <span class="st">"P"</span><span class="op">,</span></span>
+<span id="cb12-440"><a href="#cb12-440" aria-hidden="true" tabindex="-1"></a>      <span class="dt">stroke</span><span class="op">:</span> <span class="st">"black"</span><span class="op">,</span></span>
+<span id="cb12-441"><a href="#cb12-441" aria-hidden="true" tabindex="-1"></a>      <span class="dt">strokeDasharray</span><span class="op">:</span> <span class="st">"5,4"</span><span class="op">,</span></span>
+<span id="cb12-442"><a href="#cb12-442" aria-hidden="true" tabindex="-1"></a>      <span class="dt">strokeWidth</span><span class="op">:</span> <span class="fl">1.5</span></span>
+<span id="cb12-443"><a href="#cb12-443" aria-hidden="true" tabindex="-1"></a>    })<span class="op">,</span></span>
+<span id="cb12-444"><a href="#cb12-444" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-445"><a href="#cb12-445" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 200 C saturation line</span></span>
+<span id="cb12-446"><a href="#cb12-446" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">line</span>(satLine200<span class="op">,</span> {</span>
+<span id="cb12-447"><a href="#cb12-447" aria-hidden="true" tabindex="-1"></a>      <span class="dt">x</span><span class="op">:</span> <span class="st">"v"</span><span class="op">,</span></span>
+<span id="cb12-448"><a href="#cb12-448" aria-hidden="true" tabindex="-1"></a>      <span class="dt">y</span><span class="op">:</span> <span class="st">"P"</span><span class="op">,</span></span>
+<span id="cb12-449"><a href="#cb12-449" aria-hidden="true" tabindex="-1"></a>      <span class="dt">stroke</span><span class="op">:</span> <span class="st">"red"</span><span class="op">,</span></span>
+<span id="cb12-450"><a href="#cb12-450" aria-hidden="true" tabindex="-1"></a>      <span class="dt">strokeDasharray</span><span class="op">:</span> <span class="st">"6,4"</span><span class="op">,</span></span>
+<span id="cb12-451"><a href="#cb12-451" aria-hidden="true" tabindex="-1"></a>      <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">2</span></span>
+<span id="cb12-452"><a href="#cb12-452" aria-hidden="true" tabindex="-1"></a>    })<span class="op">,</span></span>
+<span id="cb12-453"><a href="#cb12-453" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-454"><a href="#cb12-454" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 300 C saturation line</span></span>
+<span id="cb12-455"><a href="#cb12-455" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">line</span>(satLine300<span class="op">,</span> {</span>
+<span id="cb12-456"><a href="#cb12-456" aria-hidden="true" tabindex="-1"></a>      <span class="dt">x</span><span class="op">:</span> <span class="st">"v"</span><span class="op">,</span></span>
+<span id="cb12-457"><a href="#cb12-457" aria-hidden="true" tabindex="-1"></a>      <span class="dt">y</span><span class="op">:</span> <span class="st">"P"</span><span class="op">,</span></span>
+<span id="cb12-458"><a href="#cb12-458" aria-hidden="true" tabindex="-1"></a>      <span class="dt">stroke</span><span class="op">:</span> <span class="st">"blue"</span><span class="op">,</span></span>
+<span id="cb12-459"><a href="#cb12-459" aria-hidden="true" tabindex="-1"></a>      <span class="dt">strokeDasharray</span><span class="op">:</span> <span class="st">"6,4"</span><span class="op">,</span></span>
+<span id="cb12-460"><a href="#cb12-460" aria-hidden="true" tabindex="-1"></a>      <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">2</span></span>
+<span id="cb12-461"><a href="#cb12-461" aria-hidden="true" tabindex="-1"></a>    })<span class="op">,</span></span>
+<span id="cb12-462"><a href="#cb12-462" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-463"><a href="#cb12-463" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Redlich--Kwong prediction</span></span>
+<span id="cb12-464"><a href="#cb12-464" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">line</span>(liquidBranch<span class="op">,</span> {</span>
+<span id="cb12-465"><a href="#cb12-465" aria-hidden="true" tabindex="-1"></a>      <span class="dt">x</span><span class="op">:</span> <span class="st">"v"</span><span class="op">,</span></span>
+<span id="cb12-466"><a href="#cb12-466" aria-hidden="true" tabindex="-1"></a>      <span class="dt">y</span><span class="op">:</span> <span class="st">"P"</span><span class="op">,</span></span>
+<span id="cb12-467"><a href="#cb12-467" aria-hidden="true" tabindex="-1"></a>      <span class="dt">stroke</span><span class="op">:</span> <span class="st">"purple"</span><span class="op">,</span></span>
+<span id="cb12-468"><a href="#cb12-468" aria-hidden="true" tabindex="-1"></a>      <span class="dt">strokeWidth</span><span class="op">:</span> <span class="fl">2.5</span></span>
+<span id="cb12-469"><a href="#cb12-469" aria-hidden="true" tabindex="-1"></a>    })<span class="op">,</span></span>
+<span id="cb12-470"><a href="#cb12-470" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-471"><a href="#cb12-471" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">line</span>(vaporBranch<span class="op">,</span> {</span>
+<span id="cb12-472"><a href="#cb12-472" aria-hidden="true" tabindex="-1"></a>      <span class="dt">x</span><span class="op">:</span> <span class="st">"v"</span><span class="op">,</span></span>
+<span id="cb12-473"><a href="#cb12-473" aria-hidden="true" tabindex="-1"></a>      <span class="dt">y</span><span class="op">:</span> <span class="st">"P"</span><span class="op">,</span></span>
+<span id="cb12-474"><a href="#cb12-474" aria-hidden="true" tabindex="-1"></a>      <span class="dt">stroke</span><span class="op">:</span> <span class="st">"purple"</span><span class="op">,</span></span>
+<span id="cb12-475"><a href="#cb12-475" aria-hidden="true" tabindex="-1"></a>      <span class="dt">strokeWidth</span><span class="op">:</span> <span class="fl">2.5</span></span>
+<span id="cb12-476"><a href="#cb12-476" aria-hidden="true" tabindex="-1"></a>    })<span class="op">,</span></span>
+<span id="cb12-477"><a href="#cb12-477" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-478"><a href="#cb12-478" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 200 C data</span></span>
+<span id="cb12-479"><a href="#cb12-479" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">dot</span>(waterData200<span class="op">,</span> {</span>
+<span id="cb12-480"><a href="#cb12-480" aria-hidden="true" tabindex="-1"></a>      <span class="dt">x</span><span class="op">:</span> <span class="st">"v"</span><span class="op">,</span></span>
+<span id="cb12-481"><a href="#cb12-481" aria-hidden="true" tabindex="-1"></a>      <span class="dt">y</span><span class="op">:</span> <span class="st">"P"</span><span class="op">,</span></span>
+<span id="cb12-482"><a href="#cb12-482" aria-hidden="true" tabindex="-1"></a>      <span class="dt">r</span><span class="op">:</span> <span class="dv">5</span><span class="op">,</span></span>
+<span id="cb12-483"><a href="#cb12-483" aria-hidden="true" tabindex="-1"></a>      <span class="dt">stroke</span><span class="op">:</span> <span class="st">"black"</span><span class="op">,</span></span>
+<span id="cb12-484"><a href="#cb12-484" aria-hidden="true" tabindex="-1"></a>      <span class="dt">fill</span><span class="op">:</span> <span class="st">"red"</span><span class="op">,</span></span>
+<span id="cb12-485"><a href="#cb12-485" aria-hidden="true" tabindex="-1"></a>      <span class="dt">title</span><span class="op">:</span> d <span class="kw">=&gt;</span> <span class="vs">`200 C </span><span class="sc">${</span>d<span class="op">.</span><span class="at">region</span><span class="sc">}</span><span class="vs">: P = </span><span class="sc">${</span>d<span class="op">.</span><span class="at">P</span><span class="sc">}</span><span class="vs"> MPa, v = </span><span class="sc">${</span>d<span class="op">.</span><span class="at">v</span><span class="sc">}</span><span class="vs"> m³/kg`</span></span>
+<span id="cb12-486"><a href="#cb12-486" aria-hidden="true" tabindex="-1"></a>    })<span class="op">,</span></span>
+<span id="cb12-487"><a href="#cb12-487" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-488"><a href="#cb12-488" aria-hidden="true" tabindex="-1"></a>    <span class="co">// 300 C data</span></span>
+<span id="cb12-489"><a href="#cb12-489" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">dot</span>(waterData300<span class="op">,</span> {</span>
+<span id="cb12-490"><a href="#cb12-490" aria-hidden="true" tabindex="-1"></a>      <span class="dt">x</span><span class="op">:</span> <span class="st">"v"</span><span class="op">,</span></span>
+<span id="cb12-491"><a href="#cb12-491" aria-hidden="true" tabindex="-1"></a>      <span class="dt">y</span><span class="op">:</span> <span class="st">"P"</span><span class="op">,</span></span>
+<span id="cb12-492"><a href="#cb12-492" aria-hidden="true" tabindex="-1"></a>      <span class="dt">r</span><span class="op">:</span> <span class="dv">5</span><span class="op">,</span></span>
+<span id="cb12-493"><a href="#cb12-493" aria-hidden="true" tabindex="-1"></a>      <span class="dt">stroke</span><span class="op">:</span> <span class="st">"black"</span><span class="op">,</span></span>
+<span id="cb12-494"><a href="#cb12-494" aria-hidden="true" tabindex="-1"></a>      <span class="dt">fill</span><span class="op">:</span> <span class="st">"blue"</span><span class="op">,</span></span>
+<span id="cb12-495"><a href="#cb12-495" aria-hidden="true" tabindex="-1"></a>      <span class="dt">title</span><span class="op">:</span> d <span class="kw">=&gt;</span> <span class="vs">`300 C </span><span class="sc">${</span>d<span class="op">.</span><span class="at">region</span><span class="sc">}</span><span class="vs">: P = </span><span class="sc">${</span>d<span class="op">.</span><span class="at">P</span><span class="sc">}</span><span class="vs"> MPa, v = </span><span class="sc">${</span>d<span class="op">.</span><span class="at">v</span><span class="sc">}</span><span class="vs"> m³/kg`</span></span>
+<span id="cb12-496"><a href="#cb12-496" aria-hidden="true" tabindex="-1"></a>    })<span class="op">,</span></span>
+<span id="cb12-497"><a href="#cb12-497" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-498"><a href="#cb12-498" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Critical point</span></span>
+<span id="cb12-499"><a href="#cb12-499" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">dot</span>([{<span class="dt">v</span><span class="op">:</span> <span class="fl">0.003106</span><span class="op">,</span> <span class="dt">P</span><span class="op">:</span> <span class="fl">22.064</span>}]<span class="op">,</span> {</span>
+<span id="cb12-500"><a href="#cb12-500" aria-hidden="true" tabindex="-1"></a>      <span class="dt">x</span><span class="op">:</span> <span class="st">"v"</span><span class="op">,</span></span>
+<span id="cb12-501"><a href="#cb12-501" aria-hidden="true" tabindex="-1"></a>      <span class="dt">y</span><span class="op">:</span> <span class="st">"P"</span><span class="op">,</span></span>
+<span id="cb12-502"><a href="#cb12-502" aria-hidden="true" tabindex="-1"></a>      <span class="dt">r</span><span class="op">:</span> <span class="dv">5</span><span class="op">,</span></span>
+<span id="cb12-503"><a href="#cb12-503" aria-hidden="true" tabindex="-1"></a>      <span class="dt">fill</span><span class="op">:</span> <span class="st">"black"</span><span class="op">,</span></span>
+<span id="cb12-504"><a href="#cb12-504" aria-hidden="true" tabindex="-1"></a>      <span class="dt">title</span><span class="op">:</span> <span class="st">"Critical point"</span></span>
+<span id="cb12-505"><a href="#cb12-505" aria-hidden="true" tabindex="-1"></a>    })<span class="op">,</span></span>
+<span id="cb12-506"><a href="#cb12-506" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-507"><a href="#cb12-507" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Main labels</span></span>
+<span id="cb12-508"><a href="#cb12-508" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">text</span>([{<span class="dt">x</span><span class="op">:</span> <span class="fl">0.006</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="dv">60</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Redlich--Kwong prediction"</span>}]<span class="op">,</span> {</span>
+<span id="cb12-509"><a href="#cb12-509" aria-hidden="true" tabindex="-1"></a>      <span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span></span>
+<span id="cb12-510"><a href="#cb12-510" aria-hidden="true" tabindex="-1"></a>      <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span></span>
+<span id="cb12-511"><a href="#cb12-511" aria-hidden="true" tabindex="-1"></a>      <span class="dt">text</span><span class="op">:</span> <span class="st">"label"</span><span class="op">,</span></span>
+<span id="cb12-512"><a href="#cb12-512" aria-hidden="true" tabindex="-1"></a>      <span class="dt">fill</span><span class="op">:</span> <span class="st">"purple"</span><span class="op">,</span></span>
+<span id="cb12-513"><a href="#cb12-513" aria-hidden="true" tabindex="-1"></a>      <span class="dt">fontSize</span><span class="op">:</span> <span class="dv">13</span><span class="op">,</span></span>
+<span id="cb12-514"><a href="#cb12-514" aria-hidden="true" tabindex="-1"></a>      <span class="dt">fontWeight</span><span class="op">:</span> <span class="st">"bold"</span></span>
+<span id="cb12-515"><a href="#cb12-515" aria-hidden="true" tabindex="-1"></a>    })<span class="op">,</span></span>
+<span id="cb12-516"><a href="#cb12-516" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-517"><a href="#cb12-517" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">text</span>([{<span class="dt">x</span><span class="op">:</span> <span class="fl">0.025</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="fl">2.0</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"200°C saturation line"</span>}]<span class="op">,</span> {</span>
+<span id="cb12-518"><a href="#cb12-518" aria-hidden="true" tabindex="-1"></a>      <span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span></span>
+<span id="cb12-519"><a href="#cb12-519" aria-hidden="true" tabindex="-1"></a>      <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span></span>
+<span id="cb12-520"><a href="#cb12-520" aria-hidden="true" tabindex="-1"></a>      <span class="dt">text</span><span class="op">:</span> <span class="st">"label"</span><span class="op">,</span></span>
+<span id="cb12-521"><a href="#cb12-521" aria-hidden="true" tabindex="-1"></a>      <span class="dt">fill</span><span class="op">:</span> <span class="st">"red"</span><span class="op">,</span></span>
+<span id="cb12-522"><a href="#cb12-522" aria-hidden="true" tabindex="-1"></a>      <span class="dt">fontSize</span><span class="op">:</span> <span class="dv">12</span></span>
+<span id="cb12-523"><a href="#cb12-523" aria-hidden="true" tabindex="-1"></a>    })<span class="op">,</span></span>
+<span id="cb12-524"><a href="#cb12-524" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-525"><a href="#cb12-525" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">text</span>([{<span class="dt">x</span><span class="op">:</span> <span class="fl">0.004</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="fl">10.5</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"300°C saturation line"</span>}]<span class="op">,</span> {</span>
+<span id="cb12-526"><a href="#cb12-526" aria-hidden="true" tabindex="-1"></a>      <span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span></span>
+<span id="cb12-527"><a href="#cb12-527" aria-hidden="true" tabindex="-1"></a>      <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span></span>
+<span id="cb12-528"><a href="#cb12-528" aria-hidden="true" tabindex="-1"></a>      <span class="dt">text</span><span class="op">:</span> <span class="st">"label"</span><span class="op">,</span></span>
+<span id="cb12-529"><a href="#cb12-529" aria-hidden="true" tabindex="-1"></a>      <span class="dt">fill</span><span class="op">:</span> <span class="st">"blue"</span><span class="op">,</span></span>
+<span id="cb12-530"><a href="#cb12-530" aria-hidden="true" tabindex="-1"></a>      <span class="dt">fontSize</span><span class="op">:</span> <span class="dv">12</span></span>
+<span id="cb12-531"><a href="#cb12-531" aria-hidden="true" tabindex="-1"></a>    })<span class="op">,</span></span>
+<span id="cb12-532"><a href="#cb12-532" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-533"><a href="#cb12-533" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">text</span>([{<span class="dt">x</span><span class="op">:</span> <span class="fl">0.00105</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="fl">0.03</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Liquid region"</span>}]<span class="op">,</span> {</span>
+<span id="cb12-534"><a href="#cb12-534" aria-hidden="true" tabindex="-1"></a>      <span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span></span>
+<span id="cb12-535"><a href="#cb12-535" aria-hidden="true" tabindex="-1"></a>      <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span></span>
+<span id="cb12-536"><a href="#cb12-536" aria-hidden="true" tabindex="-1"></a>      <span class="dt">text</span><span class="op">:</span> <span class="st">"label"</span><span class="op">,</span></span>
+<span id="cb12-537"><a href="#cb12-537" aria-hidden="true" tabindex="-1"></a>      <span class="dt">dx</span><span class="op">:</span> <span class="dv">10</span><span class="op">,</span></span>
+<span id="cb12-538"><a href="#cb12-538" aria-hidden="true" tabindex="-1"></a>      <span class="dt">fontSize</span><span class="op">:</span> <span class="dv">12</span></span>
+<span id="cb12-539"><a href="#cb12-539" aria-hidden="true" tabindex="-1"></a>    })<span class="op">,</span></span>
+<span id="cb12-540"><a href="#cb12-540" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-541"><a href="#cb12-541" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">text</span>([{<span class="dt">x</span><span class="op">:</span> <span class="fl">0.025</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="fl">0.08</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Vapor-liquid region"</span>}]<span class="op">,</span> {</span>
+<span id="cb12-542"><a href="#cb12-542" aria-hidden="true" tabindex="-1"></a>      <span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span></span>
+<span id="cb12-543"><a href="#cb12-543" aria-hidden="true" tabindex="-1"></a>      <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span></span>
+<span id="cb12-544"><a href="#cb12-544" aria-hidden="true" tabindex="-1"></a>      <span class="dt">text</span><span class="op">:</span> <span class="st">"label"</span><span class="op">,</span></span>
+<span id="cb12-545"><a href="#cb12-545" aria-hidden="true" tabindex="-1"></a>      <span class="dt">fontSize</span><span class="op">:</span> <span class="dv">12</span></span>
+<span id="cb12-546"><a href="#cb12-546" aria-hidden="true" tabindex="-1"></a>    })<span class="op">,</span></span>
+<span id="cb12-547"><a href="#cb12-547" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-548"><a href="#cb12-548" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">text</span>([{<span class="dt">x</span><span class="op">:</span> <span class="fl">2.0</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="fl">0.3</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Vapor region"</span>}]<span class="op">,</span> {</span>
+<span id="cb12-549"><a href="#cb12-549" aria-hidden="true" tabindex="-1"></a>      <span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span></span>
+<span id="cb12-550"><a href="#cb12-550" aria-hidden="true" tabindex="-1"></a>      <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span></span>
+<span id="cb12-551"><a href="#cb12-551" aria-hidden="true" tabindex="-1"></a>      <span class="dt">text</span><span class="op">:</span> <span class="st">"label"</span><span class="op">,</span></span>
+<span id="cb12-552"><a href="#cb12-552" aria-hidden="true" tabindex="-1"></a>      <span class="dt">fontSize</span><span class="op">:</span> <span class="dv">12</span></span>
+<span id="cb12-553"><a href="#cb12-553" aria-hidden="true" tabindex="-1"></a>    })<span class="op">,</span></span>
+<span id="cb12-554"><a href="#cb12-554" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-555"><a href="#cb12-555" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">text</span>([{<span class="dt">x</span><span class="op">:</span> <span class="fl">0.006</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="dv">25</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Critical point"</span>}]<span class="op">,</span> {</span>
+<span id="cb12-556"><a href="#cb12-556" aria-hidden="true" tabindex="-1"></a>      <span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span></span>
+<span id="cb12-557"><a href="#cb12-557" aria-hidden="true" tabindex="-1"></a>      <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span></span>
+<span id="cb12-558"><a href="#cb12-558" aria-hidden="true" tabindex="-1"></a>      <span class="dt">text</span><span class="op">:</span> <span class="st">"label"</span><span class="op">,</span></span>
+<span id="cb12-559"><a href="#cb12-559" aria-hidden="true" tabindex="-1"></a>      <span class="dt">fontSize</span><span class="op">:</span> <span class="dv">12</span></span>
+<span id="cb12-560"><a href="#cb12-560" aria-hidden="true" tabindex="-1"></a>    })<span class="op">,</span></span>
+<span id="cb12-561"><a href="#cb12-561" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-562"><a href="#cb12-562" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">text</span>([{<span class="dt">x</span><span class="op">:</span> <span class="fl">0.0022</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="fl">0.55</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Saturation dome"</span>}]<span class="op">,</span> {</span>
+<span id="cb12-563"><a href="#cb12-563" aria-hidden="true" tabindex="-1"></a>      <span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span></span>
+<span id="cb12-564"><a href="#cb12-564" aria-hidden="true" tabindex="-1"></a>      <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span></span>
+<span id="cb12-565"><a href="#cb12-565" aria-hidden="true" tabindex="-1"></a>      <span class="dt">text</span><span class="op">:</span> <span class="st">"label"</span><span class="op">,</span></span>
+<span id="cb12-566"><a href="#cb12-566" aria-hidden="true" tabindex="-1"></a>      <span class="dt">fontSize</span><span class="op">:</span> <span class="dv">12</span></span>
+<span id="cb12-567"><a href="#cb12-567" aria-hidden="true" tabindex="-1"></a>    })<span class="op">,</span></span>
+<span id="cb12-568"><a href="#cb12-568" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-569"><a href="#cb12-569" aria-hidden="true" tabindex="-1"></a>    <span class="co">// Manual legend</span></span>
+<span id="cb12-570"><a href="#cb12-570" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">text</span>([{<span class="dt">x</span><span class="op">:</span> <span class="fl">5.0</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="dv">50</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"● 200°C data"</span>}]<span class="op">,</span> {</span>
+<span id="cb12-571"><a href="#cb12-571" aria-hidden="true" tabindex="-1"></a>      <span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span></span>
+<span id="cb12-572"><a href="#cb12-572" aria-hidden="true" tabindex="-1"></a>      <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span></span>
+<span id="cb12-573"><a href="#cb12-573" aria-hidden="true" tabindex="-1"></a>      <span class="dt">text</span><span class="op">:</span> <span class="st">"label"</span><span class="op">,</span></span>
+<span id="cb12-574"><a href="#cb12-574" aria-hidden="true" tabindex="-1"></a>      <span class="dt">fill</span><span class="op">:</span> <span class="st">"red"</span><span class="op">,</span></span>
+<span id="cb12-575"><a href="#cb12-575" aria-hidden="true" tabindex="-1"></a>      <span class="dt">fontSize</span><span class="op">:</span> <span class="dv">13</span></span>
+<span id="cb12-576"><a href="#cb12-576" aria-hidden="true" tabindex="-1"></a>    })<span class="op">,</span></span>
+<span id="cb12-577"><a href="#cb12-577" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-578"><a href="#cb12-578" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">text</span>([{<span class="dt">x</span><span class="op">:</span> <span class="fl">5.0</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="dv">30</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"● 300°C data"</span>}]<span class="op">,</span> {</span>
+<span id="cb12-579"><a href="#cb12-579" aria-hidden="true" tabindex="-1"></a>      <span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span></span>
+<span id="cb12-580"><a href="#cb12-580" aria-hidden="true" tabindex="-1"></a>      <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span></span>
+<span id="cb12-581"><a href="#cb12-581" aria-hidden="true" tabindex="-1"></a>      <span class="dt">text</span><span class="op">:</span> <span class="st">"label"</span><span class="op">,</span></span>
+<span id="cb12-582"><a href="#cb12-582" aria-hidden="true" tabindex="-1"></a>      <span class="dt">fill</span><span class="op">:</span> <span class="st">"blue"</span><span class="op">,</span></span>
+<span id="cb12-583"><a href="#cb12-583" aria-hidden="true" tabindex="-1"></a>      <span class="dt">fontSize</span><span class="op">:</span> <span class="dv">13</span></span>
+<span id="cb12-584"><a href="#cb12-584" aria-hidden="true" tabindex="-1"></a>    })<span class="op">,</span></span>
+<span id="cb12-585"><a href="#cb12-585" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-586"><a href="#cb12-586" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">text</span>([{<span class="dt">x</span><span class="op">:</span> <span class="fl">5.0</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="dv">18</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"− RK EOS"</span>}]<span class="op">,</span> {</span>
+<span id="cb12-587"><a href="#cb12-587" aria-hidden="true" tabindex="-1"></a>      <span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span></span>
+<span id="cb12-588"><a href="#cb12-588" aria-hidden="true" tabindex="-1"></a>      <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span></span>
+<span id="cb12-589"><a href="#cb12-589" aria-hidden="true" tabindex="-1"></a>      <span class="dt">text</span><span class="op">:</span> <span class="st">"label"</span><span class="op">,</span></span>
+<span id="cb12-590"><a href="#cb12-590" aria-hidden="true" tabindex="-1"></a>      <span class="dt">fill</span><span class="op">:</span> <span class="st">"purple"</span><span class="op">,</span></span>
+<span id="cb12-591"><a href="#cb12-591" aria-hidden="true" tabindex="-1"></a>      <span class="dt">fontSize</span><span class="op">:</span> <span class="dv">13</span></span>
+<span id="cb12-592"><a href="#cb12-592" aria-hidden="true" tabindex="-1"></a>    })<span class="op">,</span></span>
+<span id="cb12-593"><a href="#cb12-593" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-594"><a href="#cb12-594" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">text</span>([{<span class="dt">x</span><span class="op">:</span> <span class="fl">5.0</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="dv">11</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"-- VLE dome"</span>}]<span class="op">,</span> {</span>
+<span id="cb12-595"><a href="#cb12-595" aria-hidden="true" tabindex="-1"></a>      <span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span></span>
+<span id="cb12-596"><a href="#cb12-596" aria-hidden="true" tabindex="-1"></a>      <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span></span>
+<span id="cb12-597"><a href="#cb12-597" aria-hidden="true" tabindex="-1"></a>      <span class="dt">text</span><span class="op">:</span> <span class="st">"label"</span><span class="op">,</span></span>
+<span id="cb12-598"><a href="#cb12-598" aria-hidden="true" tabindex="-1"></a>      <span class="dt">fill</span><span class="op">:</span> <span class="st">"black"</span><span class="op">,</span></span>
+<span id="cb12-599"><a href="#cb12-599" aria-hidden="true" tabindex="-1"></a>      <span class="dt">fontSize</span><span class="op">:</span> <span class="dv">13</span></span>
+<span id="cb12-600"><a href="#cb12-600" aria-hidden="true" tabindex="-1"></a>    })</span>
+<span id="cb12-601"><a href="#cb12-601" aria-hidden="true" tabindex="-1"></a>  ]</span>
+<span id="cb12-602"><a href="#cb12-602" aria-hidden="true" tabindex="-1"></a>})</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-12" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Solution to the Interactive Activity
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<details>
+<summary>
+Show answer
+</summary>
+This exercise is meant to be exploratory, so there is no single correct answer. However, you should find that the following values of <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> give a reasonable fit to the data from both temperatures.
+</details>
+</div>
+</div>
+<p>Above exercise could show how difficult it is to fit a simple cubic equation of state to real-fluid data. To generalize the method, the critical properties of the fluid are often used to calculate these EOS parameters.</p>
+</section>
+</section>
+<section id="critical-point-conditions" class="level3">
+<h3 class="anchored" data-anchor-id="critical-point-conditions">Critical-Point Conditions</h3>
+<p>To understand how the parameters in a cubic equation of state are obtained, we first need to look at the behavior of a pure fluid near its <strong>critical point</strong>.</p>
+<p>For a pure substance, typical <span class="math inline">\(P\)</span>–<span class="math inline">\(v\)</span> isotherms change shape as temperature increases. At temperatures below the critical temperature, the fluid can exist as two distinct phases: liquid and vapor. At the critical temperature, however, the distinction between liquid and vapor disappears.</p>
+<p>The critical point is defined by the critical temperature, critical pressure, and critical molar volume:</p>
+<p><span class="math display">\[
+(T_c, P_c, v_c)
+\]</span></p>
+<p>At this point, the critical isotherm has a <strong>horizontal inflection point</strong>. This means that both the slope and the curvature of the <span class="math inline">\(P\)</span>–<span class="math inline">\(v\)</span> curve are zero at the critical point.</p>
+<div id="fig-critical-point" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-critical-point-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/critical_point.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:60.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-critical-point-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Critical point on a <span class="math inline">\(P\)</span>-<span class="math inline">\(v\)</span> diagram.
+</figcaption>
+</figure>
+</div>
+<p>For a pure component described by an equation of state,</p>
+<p><span class="math display">\[
+P = P(T,v)
+\]</span></p>
+<p>the critical-point conditions are</p>
+<p><span class="math display">\[
+\left(\frac{\partial P}{\partial v}\right)_{T_c} = 0
+\]</span></p>
+<p>and</p>
+<p><span class="math display">\[
+\left(\frac{\partial^2 P}{\partial v^2}\right)_{T_c} = 0
+\]</span></p>
+<p>The first condition states that the isotherm is locally flat at the critical point. The second condition states that the curvature also vanishes at this point.</p>
+<p>Together, these two conditions provide a mathematical definition of the critical point on a <span class="math inline">\(P\)</span>–<span class="math inline">\(v\)</span> diagram. They are also useful because they allow us to relate the parameters in an equation of state to measurable critical properties.</p>
+</section>
+<section id="application-to-the-redlichkwong-equation" class="level3">
+<h3 class="anchored" data-anchor-id="application-to-the-redlichkwong-equation">Application to the Redlich–Kwong Equation</h3>
+<p>The Redlich–Kwong equation of state is</p>
+<p><span class="math display">\[
+P =
+\frac{RT}{v-b}
+-
+\frac{a}{\sqrt{T}v(v+b)}
+\]</span></p>
+<p>where <span class="math inline">\(a\)</span> represents the attractive contribution and <span class="math inline">\(b\)</span> represents the repulsive or excluded-volume contribution.</p>
+<p>To determine <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>, we apply the critical-point conditions to the Redlich–Kwong equation:</p>
+<p><span class="math display">\[
+\left(\frac{\partial P}{\partial v}\right)_{T_c} = 0
+\]</span></p>
+<p>and</p>
+<p><span class="math display">\[
+\left(\frac{\partial^2 P}{\partial v^2}\right)_{T_c} = 0
+\]</span></p>
+<p>Solving these equations gives the Redlich–Kwong parameter correlations:</p>
+<p><span class="math display">\[
+a
+=
+\frac{R^2 T_c^{5/2}}
+{9\left(2^{1/3}-1\right)P_c}
+\]</span></p>
+<p>or approximately,</p>
+<p><span class="math display">\[
+a
+\approx
+0.42748
+\frac{R^2 T_c^{5/2}}{P_c}
+\]</span></p>
+<p>and</p>
+<p><span class="math display">\[
+b
+=
+\frac{1}{3}
+\left(2^{1/3}-1\right)
+\frac{RT_c}{P_c}
+\]</span></p>
+<p>or approximately,</p>
+<p><span class="math display">\[
+b
+\approx
+0.08664
+\frac{RT_c}{P_c}
+\]</span></p>
+<p>Therefore, for a pure component, the Redlich–Kwong parameters can be estimated using only the critical temperature and critical pressure.</p>
+<p>This is an important result. It means that we can construct an equation of state even when detailed experimental <span class="math inline">\(P\)</span>–<span class="math inline">\(v\)</span> data are not available.</p>
+</section>
+<section id="example-redlichkwong-parameters-for-water" class="level3">
+<h3 class="anchored" data-anchor-id="example-redlichkwong-parameters-for-water">Example: Redlich–Kwong Parameters for Water</h3>
+<p>For water, the critical properties are approximately</p>
+<p><span class="math display">\[
+T_c = 647.1 \ \mathrm{K}
+\]</span></p>
+<p>and</p>
+<p><span class="math display">\[
+P_c = 22.064 \ \mathrm{MPa}
+\]</span></p>
+<p>Using these values in the Redlich–Kwong parameter correlations gives</p>
+<p><span class="math display">\[
+a
+\approx
+0.04395
+\ \mathrm{MPa \, m^6 \, K^{1/2}/kg^2}
+\]</span></p>
+<p>and</p>
+<p><span class="math display">\[
+b
+\approx
+0.00117
+\ \mathrm{m^3/kg}
+\]</span></p>
+<p>These values can be used as the default values in the interactive Redlich–Kwong activity.</p>
+<p>Try these values in the interactive plot and compare the prediction with the experimental <span class="math inline">\(P\)</span>–<span class="math inline">\(v\)</span> data at <span class="math inline">\(200^\circ\mathrm{C}\)</span> and <span class="math inline">\(300^\circ\mathrm{C}\)</span>. You should observe that the Redlich–Kwong equation captures the general trend of the data, especially in the vapor region, but it does not describe the liquid region very accurately.</p>
+<p>This limitation is expected. The Redlich–Kwong equation works best for relatively simple, nearly spherical, nonpolar molecules, such as noble gases. For highly polar or associating substances, such as water and alcohols, the predictions are less accurate because these fluids have strong intermolecular interactions that are not fully captured by the simple RK form.</p>
 
 
+</section>
+</section>
 
 </main> <!-- /main -->
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IlxuLy8gU3BlY2lmaWMgZ2FzIGNvbnN0YW50IGZvciB3YXRlclxuLy8gUiA9IDAuNDYxNSBrUGEgbV4zLyhrZyBLKVxuLy8gICA9IDAuMDAwNDYxNSBNUGEgbV4zLyhrZyBLKVxuUiA9IDAuMDAwNDYxNVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0yIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiXG52aWV3b2YgVF9DID0gSW5wdXRzLnNlbGVjdChcbiAgWzIwMCwgMzAwXSxcbiAge1xuICAgIHZhbHVlOiAyMDAsXG4gICAgbGFiZWw6IFwiVGVtcGVyYXR1cmUsIFQgW8KwQ11cIlxuICB9XG4pXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTMiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJcblQgPSBUX0MgKyAyNzMuMTVcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtNCIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6Ilxudmlld29mIGEgPSBJbnB1dHMucmFuZ2UoXG4gIFswLjAyMCwgMC4wNzBdLFxuICB7XG4gICAgdmFsdWU6IDAuMDQzOTUsXG4gICAgc3RlcDogMC4wMDAxLFxuICAgIGxhYmVsOiBcIkF0dHJhY3RpdmUgcGFyYW1ldGVyLCBhIFtNUGEgbeKBtiBLwrnhkJ/Csi9rZ8KyXVwiXG4gIH1cbilcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtNSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6Ilxudmlld29mIGIgPSBJbnB1dHMucmFuZ2UoXG4gIFswLjAwMDcsIDAuMDAxNl0sXG4gIHtcbiAgICB2YWx1ZTogMC4wMDExNyxcbiAgICBzdGVwOiAwLjAwMDAxLFxuICAgIGxhYmVsOiBcIlJlcHVsc2l2ZSBwYXJhbWV0ZXIsIGIgW23Csy9rZ11cIlxuICB9XG4pXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTYiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJcblBfUksgPSB2ID0+IHtcbiAgcmV0dXJuIFIqVC8odiAtIGIpIC0gYS8oTWF0aC5zcXJ0KFQpKnYqKHYgKyBiKSlcbn1cbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtNyIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IlxuLy8gQXBwcm94aW1hdGUgd2F0ZXIgUC12IGRhdGEgYXQgMjAwIENcbndhdGVyRGF0YTIwMCA9IFtcbiAge1RsYWJlbDogXCIyMDAgQ1wiLCByZWdpb246IFwiQ29tcHJlc3NlZCBsaXF1aWRcIiwgdjogMC4wMDExNiwgUDogMTAwfSxcbiAge1RsYWJlbDogXCIyMDAgQ1wiLCByZWdpb246IFwiQ29tcHJlc3NlZCBsaXF1aWRcIiwgdjogMC4wMDExNSwgUDogNTB9LFxuICB7VGxhYmVsOiBcIjIwMCBDXCIsIHJlZ2lvbjogXCJDb21wcmVzc2VkIGxpcXVpZFwiLCB2OiAwLjAwMTE0LCBQOiAyMH0sXG4gIHtUbGFiZWw6IFwiMjAwIENcIiwgcmVnaW9uOiBcIkNvbXByZXNzZWQgbGlxdWlkXCIsIHY6IDAuMDAxMTYsIFA6IDEwfSxcbiAge1RsYWJlbDogXCIyMDAgQ1wiLCByZWdpb246IFwiQ29tcHJlc3NlZCBsaXF1aWRcIiwgdjogMC4wMDExNiwgUDogNX0sXG5cbiAge1RsYWJlbDogXCIyMDAgQ1wiLCByZWdpb246IFwiU2F0dXJhdGVkIGxpcXVpZFwiLCB2OiAwLjAwMTE1NywgUDogMS41NTQ5fSxcbiAge1RsYWJlbDogXCIyMDAgQ1wiLCByZWdpb246IFwiU2F0dXJhdGVkIHZhcG9yXCIsIHY6IDAuMTI3NCwgUDogMS41NTQ5fSxcblxuICB7VGxhYmVsOiBcIjIwMCBDXCIsIHJlZ2lvbjogXCJTdXBlcmhlYXRlZCB2YXBvclwiLCB2OiAwLjEzMiwgUDogMS41fSxcbiAge1RsYWJlbDogXCIyMDAgQ1wiLCByZWdpb246IFwiU3VwZXJoZWF0ZWQgdmFwb3JcIiwgdjogMC4yMDYsIFA6IDEuMH0sXG4gIHtUbGFiZWw6IFwiMjAwIENcIiwgcmVnaW9uOiBcIlN1cGVyaGVhdGVkIHZhcG9yXCIsIHY6IDAuNDI1LCBQOiAwLjV9LFxuICB7VGxhYmVsOiBcIjIwMCBDXCIsIHJlZ2lvbjogXCJTdXBlcmhlYXRlZCB2YXBvclwiLCB2OiAxLjA4MCwgUDogMC4yfSxcbiAge1RsYWJlbDogXCIyMDAgQ1wiLCByZWdpb246IFwiU3VwZXJoZWF0ZWQgdmFwb3JcIiwgdjogMi4xNzIsIFA6IDAuMX0sXG4gIHtUbGFiZWw6IFwiMjAwIENcIiwgcmVnaW9uOiBcIlN1cGVyaGVhdGVkIHZhcG9yXCIsIHY6IDQuMzYsIFA6IDAuMDV9XG5dXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTgiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJcbi8vIEFwcHJveGltYXRlIHdhdGVyIFAtdiBkYXRhIGF0IDMwMCBDXG53YXRlckRhdGEzMDAgPSBbXG4gIHtUbGFiZWw6IFwiMzAwIENcIiwgcmVnaW9uOiBcIkNvbXByZXNzZWQgbGlxdWlkXCIsIHY6IDAuMDAxMzgsIFA6IDEwMH0sXG4gIHtUbGFiZWw6IFwiMzAwIENcIiwgcmVnaW9uOiBcIkNvbXByZXNzZWQgbGlxdWlkXCIsIHY6IDAuMDAxMzksIFA6IDUwfSxcbiAge1RsYWJlbDogXCIzMDAgQ1wiLCByZWdpb246IFwiQ29tcHJlc3NlZCBsaXF1aWRcIiwgdjogMC4wMDE0MCwgUDogMjB9LFxuICB7VGxhYmVsOiBcIjMwMCBDXCIsIHJlZ2lvbjogXCJDb21wcmVzc2VkIGxpcXVpZFwiLCB2OiAwLjAwMTQwLCBQOiAxMH0sXG5cbiAge1RsYWJlbDogXCIzMDAgQ1wiLCByZWdpb246IFwiU2F0dXJhdGVkIGxpcXVpZFwiLCB2OiAwLjAwMTQwNCwgUDogOC41ODh9LFxuICB7VGxhYmVsOiBcIjMwMCBDXCIsIHJlZ2lvbjogXCJTYXR1cmF0ZWQgdmFwb3JcIiwgdjogMC4wMjE3LCBQOiA4LjU4OH0sXG5cbiAge1RsYWJlbDogXCIzMDAgQ1wiLCByZWdpb246IFwiU3VwZXJoZWF0ZWQgdmFwb3JcIiwgdjogMC4wMjYsIFA6IDguMH0sXG4gIHtUbGFiZWw6IFwiMzAwIENcIiwgcmVnaW9uOiBcIlN1cGVyaGVhdGVkIHZhcG9yXCIsIHY6IDAuMDQ1LCBQOiA1LjB9LFxuICB7VGxhYmVsOiBcIjMwMCBDXCIsIHJlZ2lvbjogXCJTdXBlcmhlYXRlZCB2YXBvclwiLCB2OiAwLjEzMiwgUDogMi4wfSxcbiAge1RsYWJlbDogXCIzMDAgQ1wiLCByZWdpb246IFwiU3VwZXJoZWF0ZWQgdmFwb3JcIiwgdjogMC4yNjUsIFA6IDEuMH0sXG4gIHtUbGFiZWw6IFwiMzAwIENcIiwgcmVnaW9uOiBcIlN1cGVyaGVhdGVkIHZhcG9yXCIsIHY6IDAuNTI5LCBQOiAwLjV9LFxuICB7VGxhYmVsOiBcIjMwMCBDXCIsIHJlZ2lvbjogXCJTdXBlcmhlYXRlZCB2YXBvclwiLCB2OiAxLjMyMywgUDogMC4yfVxuXVxuXG53YXRlckRhdGEgPSB3YXRlckRhdGEyMDAuY29uY2F0KHdhdGVyRGF0YTMwMClcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtOSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6IlxuLy8gQXBwcm94aW1hdGUgc2F0dXJhdGlvbiBkb21lIGZvciB3YXRlclxuc2F0TGlxdWlkID0gW1xuICB7VDogMTAwLCBQOiAwLjEwMTMsIHY6IDAuMDAxMDQzfSxcbiAge1Q6IDEyMCwgUDogMC4xOTg1LCB2OiAwLjAwMTA2MH0sXG4gIHtUOiAxNDAsIFA6IDAuMzYxNSwgdjogMC4wMDEwODB9LFxuICB7VDogMTYwLCBQOiAwLjYxODIsIHY6IDAuMDAxMTAyfSxcbiAge1Q6IDE4MCwgUDogMS4wMDIsICB2OiAwLjAwMTEyN30sXG4gIHtUOiAyMDAsIFA6IDEuNTU0OSwgdjogMC4wMDExNTd9LFxuICB7VDogMjIwLCBQOiAyLjMyMCwgIHY6IDAuMDAxMTkwfSxcbiAge1Q6IDI0MCwgUDogMy4zNDUsICB2OiAwLjAwMTIyOX0sXG4gIHtUOiAyNjAsIFA6IDQuNjkyLCAgdjogMC4wMDEyNzZ9LFxuICB7VDogMjgwLCBQOiA2LjQxOCwgIHY6IDAuMDAxMzMzfSxcbiAge1Q6IDMwMCwgUDogOC41ODgsICB2OiAwLjAwMTQwNH0sXG4gIHtUOiAzMjAsIFA6IDExLjI4LCAgdjogMC4wMDE0OTl9LFxuICB7VDogMzQwLCBQOiAxNC42MCwgIHY6IDAuMDAxNjM4fSxcbiAge1Q6IDM2MCwgUDogMTguNjcsICB2OiAwLjAwMTg5NX0sXG4gIHtUOiAzNzQsIFA6IDIyLjA2NCwgdjogMC4wMDMxMDZ9XG5dXG5cbnNhdFZhcG9yID0gW1xuICB7VDogMTAwLCBQOiAwLjEwMTMsIHY6IDEuNjk0fSxcbiAge1Q6IDEyMCwgUDogMC4xOTg1LCB2OiAwLjg5MTl9LFxuICB7VDogMTQwLCBQOiAwLjM2MTUsIHY6IDAuNTA4OX0sXG4gIHtUOiAxNjAsIFA6IDAuNjE4MiwgdjogMC4zMDY4fSxcbiAge1Q6IDE4MCwgUDogMS4wMDIsICB2OiAwLjE5NDF9LFxuICB7VDogMjAwLCBQOiAxLjU1NDksIHY6IDAuMTI3NH0sXG4gIHtUOiAyMjAsIFA6IDIuMzIwLCAgdjogMC4wODYxfSxcbiAge1Q6IDI0MCwgUDogMy4zNDUsICB2OiAwLjA2MDJ9LFxuICB7VDogMjYwLCBQOiA0LjY5MiwgIHY6IDAuMDQzNH0sXG4gIHtUOiAyODAsIFA6IDYuNDE4LCAgdjogMC4wMzE3fSxcbiAge1Q6IDMwMCwgUDogOC41ODgsICB2OiAwLjAyMTd9LFxuICB7VDogMzIwLCBQOiAxMS4yOCwgIHY6IDAuMDE1NX0sXG4gIHtUOiAzNDAsIFA6IDE0LjYwLCAgdjogMC4wMTA4fSxcbiAge1Q6IDM2MCwgUDogMTguNjcsICB2OiAwLjAwNjk1fSxcbiAge1Q6IDM3NCwgUDogMjIuMDY0LCB2OiAwLjAwMzEwNn1cbl1cbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMTAiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJcbnNhdExpbmUyMDAgPSBbXG4gIHt2OiAwLjAwMTE1NywgUDogMS41NTQ5fSxcbiAge3Y6IDAuMTI3NCwgUDogMS41NTQ5fVxuXVxuXG5zYXRMaW5lMzAwID0gW1xuICB7djogMC4wMDE0MDQsIFA6IDguNTg4fSxcbiAge3Y6IDAuMDIxNywgUDogOC41ODh9XG5dXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTExIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiXG4vLyBHZW5lcmF0ZSBwcmVkaWN0ZWQgRU9TIGN1cnZlLlxuLy8gVGhlIGN1cnZlIGlzIHNwbGl0IHRvIGF2b2lkIG51bWVyaWNhbCBpc3N1ZXMgbmVhciB2ID0gYi5cblxubGlxdWlkQnJhbmNoID0gQXJyYXkuZnJvbSh7bGVuZ3RoOiAyNTAwfSwgKF8sIGkpID0+IHtcbiAgY29uc3QgbG9nTWluID0gTWF0aC5sb2cxMChNYXRoLm1heCgxLjAxKmIsIDhlLTQpKVxuICBjb25zdCBsb2dNYXggPSBNYXRoLmxvZzEwKDAuMDIpXG4gIGNvbnN0IHYgPSBNYXRoLnBvdygxMCwgbG9nTWluICsgaSoobG9nTWF4IC0gbG9nTWluKS8yNDk5KVxuICByZXR1cm4ge3Y6IHYsIFA6IFBfUksodil9XG59KS5maWx0ZXIoZCA9PiBkLlAgPiAwLjAxICYmIGQuUCA8IDEyMCAmJiBOdW1iZXIuaXNGaW5pdGUoZC5QKSlcblxudmFwb3JCcmFuY2ggPSBBcnJheS5mcm9tKHtsZW5ndGg6IDI1MDB9LCAoXywgaSkgPT4ge1xuICBjb25zdCBsb2dNaW4gPSBNYXRoLmxvZzEwKDAuMDIpXG4gIGNvbnN0IGxvZ01heCA9IE1hdGgubG9nMTAoMjApXG4gIGNvbnN0IHYgPSBNYXRoLnBvdygxMCwgbG9nTWluICsgaSoobG9nTWF4IC0gbG9nTWluKS8yNDk5KVxuICByZXR1cm4ge3Y6IHYsIFA6IFBfUksodil9XG59KS5maWx0ZXIoZCA9PiBkLlAgPiAwLjAxICYmIGQuUCA8IDEyMCAmJiBOdW1iZXIuaXNGaW5pdGUoZC5QKSlcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMTIiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJcblBsb3QucGxvdCh7XG4gIHdpZHRoOiA5MDAsXG4gIGhlaWdodDogNjUwLFxuICBncmlkOiB0cnVlLFxuICB4OiB7XG4gICAgdHlwZTogXCJsb2dcIixcbiAgICBsYWJlbDogXCJTcGVjaWZpYyB2b2x1bWUsIHYgW23Csy9rZ11cIixcbiAgICBkb21haW46IFs4ZS00LCAyMF1cbiAgfSxcbiAgeToge1xuICAgIHR5cGU6IFwibG9nXCIsXG4gICAgbGFiZWw6IFwiUHJlc3N1cmUsIFAgW01QYV1cIixcbiAgICBkb21haW46IFswLjAxLCAxMjBdXG4gIH0sXG4gIG1hcmtzOiBbXG4gICAgLy8gU2F0dXJhdGlvbiBkb21lXG4gICAgUGxvdC5saW5lKHNhdExpcXVpZCwge1xuICAgICAgeDogXCJ2XCIsXG4gICAgICB5OiBcIlBcIixcbiAgICAgIHN0cm9rZTogXCJibGFja1wiLFxuICAgICAgc3Ryb2tlRGFzaGFycmF5OiBcIjUsNFwiLFxuICAgICAgc3Ryb2tlV2lkdGg6IDEuNVxuICAgIH0pLFxuXG4gICAgUGxvdC5saW5lKHNhdFZhcG9yLCB7XG4gICAgICB4OiBcInZcIixcbiAgICAgIHk6IFwiUFwiLFxuICAgICAgc3Ryb2tlOiBcImJsYWNrXCIsXG4gICAgICBzdHJva2VEYXNoYXJyYXk6IFwiNSw0XCIsXG4gICAgICBzdHJva2VXaWR0aDogMS41XG4gICAgfSksXG5cbiAgICAvLyAyMDAgQyBzYXR1cmF0aW9uIGxpbmVcbiAgICBQbG90LmxpbmUoc2F0TGluZTIwMCwge1xuICAgICAgeDogXCJ2XCIsXG4gICAgICB5OiBcIlBcIixcbiAgICAgIHN0cm9rZTogXCJyZWRcIixcbiAgICAgIHN0cm9rZURhc2hhcnJheTogXCI2LDRcIixcbiAgICAgIHN0cm9rZVdpZHRoOiAyXG4gICAgfSksXG5cbiAgICAvLyAzMDAgQyBzYXR1cmF0aW9uIGxpbmVcbiAgICBQbG90LmxpbmUoc2F0TGluZTMwMCwge1xuICAgICAgeDogXCJ2XCIsXG4gICAgICB5OiBcIlBcIixcbiAgICAgIHN0cm9rZTogXCJibHVlXCIsXG4gICAgICBzdHJva2VEYXNoYXJyYXk6IFwiNiw0XCIsXG4gICAgICBzdHJva2VXaWR0aDogMlxuICAgIH0pLFxuXG4gICAgLy8gUmVkbGljaC0tS3dvbmcgcHJlZGljdGlvblxuICAgIFBsb3QubGluZShsaXF1aWRCcmFuY2gsIHtcbiAgICAgIHg6IFwidlwiLFxuICAgICAgeTogXCJQXCIsXG4gICAgICBzdHJva2U6IFwicHVycGxlXCIsXG4gICAgICBzdHJva2VXaWR0aDogMi41XG4gICAgfSksXG5cbiAgICBQbG90LmxpbmUodmFwb3JCcmFuY2gsIHtcbiAgICAgIHg6IFwidlwiLFxuICAgICAgeTogXCJQXCIsXG4gICAgICBzdHJva2U6IFwicHVycGxlXCIsXG4gICAgICBzdHJva2VXaWR0aDogMi41XG4gICAgfSksXG5cbiAgICAvLyAyMDAgQyBkYXRhXG4gICAgUGxvdC5kb3Qod2F0ZXJEYXRhMjAwLCB7XG4gICAgICB4OiBcInZcIixcbiAgICAgIHk6IFwiUFwiLFxuICAgICAgcjogNSxcbiAgICAgIHN0cm9rZTogXCJibGFja1wiLFxuICAgICAgZmlsbDogXCJyZWRcIixcbiAgICAgIHRpdGxlOiBkID0+IGAyMDAgQyAke2QucmVnaW9ufTogUCA9ICR7ZC5QfSBNUGEsIHYgPSAke2Qudn0gbcKzL2tnYFxuICAgIH0pLFxuXG4gICAgLy8gMzAwIEMgZGF0YVxuICAgIFBsb3QuZG90KHdhdGVyRGF0YTMwMCwge1xuICAgICAgeDogXCJ2XCIsXG4gICAgICB5OiBcIlBcIixcbiAgICAgIHI6IDUsXG4gICAgICBzdHJva2U6IFwiYmxhY2tcIixcbiAgICAgIGZpbGw6IFwiYmx1ZVwiLFxuICAgICAgdGl0bGU6IGQgPT4gYDMwMCBDICR7ZC5yZWdpb259OiBQID0gJHtkLlB9IE1QYSwgdiA9ICR7ZC52fSBtwrMva2dgXG4gICAgfSksXG5cbiAgICAvLyBDcml0aWNhbCBwb2ludFxuICAgIFBsb3QuZG90KFt7djogMC4wMDMxMDYsIFA6IDIyLjA2NH1dLCB7XG4gICAgICB4OiBcInZcIixcbiAgICAgIHk6IFwiUFwiLFxuICAgICAgcjogNSxcbiAgICAgIGZpbGw6IFwiYmxhY2tcIixcbiAgICAgIHRpdGxlOiBcIkNyaXRpY2FsIHBvaW50XCJcbiAgICB9KSxcblxuICAgIC8vIE1haW4gbGFiZWxzXG4gICAgUGxvdC50ZXh0KFt7eDogMC4wMDYsIHk6IDYwLCBsYWJlbDogXCJSZWRsaWNoLS1Ld29uZyBwcmVkaWN0aW9uXCJ9XSwge1xuICAgICAgeDogXCJ4XCIsXG4gICAgICB5OiBcInlcIixcbiAgICAgIHRleHQ6IFwibGFiZWxcIixcbiAgICAgIGZpbGw6IFwicHVycGxlXCIsXG4gICAgICBmb250U2l6ZTogMTMsXG4gICAgICBmb250V2VpZ2h0OiBcImJvbGRcIlxuICAgIH0pLFxuXG4gICAgUGxvdC50ZXh0KFt7eDogMC4wMjUsIHk6IDIuMCwgbGFiZWw6IFwiMjAwwrBDIHNhdHVyYXRpb24gbGluZVwifV0sIHtcbiAgICAgIHg6IFwieFwiLFxuICAgICAgeTogXCJ5XCIsXG4gICAgICB0ZXh0OiBcImxhYmVsXCIsXG4gICAgICBmaWxsOiBcInJlZFwiLFxuICAgICAgZm9udFNpemU6IDEyXG4gICAgfSksXG5cbiAgICBQbG90LnRleHQoW3t4OiAwLjAwNCwgeTogMTAuNSwgbGFiZWw6IFwiMzAwwrBDIHNhdHVyYXRpb24gbGluZVwifV0sIHtcbiAgICAgIHg6IFwieFwiLFxuICAgICAgeTogXCJ5XCIsXG4gICAgICB0ZXh0OiBcImxhYmVsXCIsXG4gICAgICBmaWxsOiBcImJsdWVcIixcbiAgICAgIGZvbnRTaXplOiAxMlxuICAgIH0pLFxuXG4gICAgUGxvdC50ZXh0KFt7eDogMC4wMDEwNSwgeTogMC4wMywgbGFiZWw6IFwiTGlxdWlkIHJlZ2lvblwifV0sIHtcbiAgICAgIHg6IFwieFwiLFxuICAgICAgeTogXCJ5XCIsXG4gICAgICB0ZXh0OiBcImxhYmVsXCIsXG4gICAgICBkeDogMTAsXG4gICAgICBmb250U2l6ZTogMTJcbiAgICB9KSxcblxuICAgIFBsb3QudGV4dChbe3g6IDAuMDI1LCB5OiAwLjA4LCBsYWJlbDogXCJWYXBvci1saXF1aWQgcmVnaW9uXCJ9XSwge1xuICAgICAgeDogXCJ4XCIsXG4gICAgICB5OiBcInlcIixcbiAgICAgIHRleHQ6IFwibGFiZWxcIixcbiAgICAgIGZvbnRTaXplOiAxMlxuICAgIH0pLFxuXG4gICAgUGxvdC50ZXh0KFt7eDogMi4wLCB5OiAwLjMsIGxhYmVsOiBcIlZhcG9yIHJlZ2lvblwifV0sIHtcbiAgICAgIHg6IFwieFwiLFxuICAgICAgeTogXCJ5XCIsXG4gICAgICB0ZXh0OiBcImxhYmVsXCIsXG4gICAgICBmb250U2l6ZTogMTJcbiAgICB9KSxcblxuICAgIFBsb3QudGV4dChbe3g6IDAuMDA2LCB5OiAyNSwgbGFiZWw6IFwiQ3JpdGljYWwgcG9pbnRcIn1dLCB7XG4gICAgICB4OiBcInhcIixcbiAgICAgIHk6IFwieVwiLFxuICAgICAgdGV4dDogXCJsYWJlbFwiLFxuICAgICAgZm9udFNpemU6IDEyXG4gICAgfSksXG5cbiAgICBQbG90LnRleHQoW3t4OiAwLjAwMjIsIHk6IDAuNTUsIGxhYmVsOiBcIlNhdHVyYXRpb24gZG9tZVwifV0sIHtcbiAgICAgIHg6IFwieFwiLFxuICAgICAgeTogXCJ5XCIsXG4gICAgICB0ZXh0OiBcImxhYmVsXCIsXG4gICAgICBmb250U2l6ZTogMTJcbiAgICB9KSxcblxuICAgIC8vIE1hbnVhbCBsZWdlbmRcbiAgICBQbG90LnRleHQoW3t4OiA1LjAsIHk6IDUwLCBsYWJlbDogXCLil48gMjAwwrBDIGRhdGFcIn1dLCB7XG4gICAgICB4OiBcInhcIixcbiAgICAgIHk6IFwieVwiLFxuICAgICAgdGV4dDogXCJsYWJlbFwiLFxuICAgICAgZmlsbDogXCJyZWRcIixcbiAgICAgIGZvbnRTaXplOiAxM1xuICAgIH0pLFxuXG4gICAgUGxvdC50ZXh0KFt7eDogNS4wLCB5OiAzMCwgbGFiZWw6IFwi4pePIDMwMMKwQyBkYXRhXCJ9XSwge1xuICAgICAgeDogXCJ4XCIsXG4gICAgICB5OiBcInlcIixcbiAgICAgIHRleHQ6IFwibGFiZWxcIixcbiAgICAgIGZpbGw6IFwiYmx1ZVwiLFxuICAgICAgZm9udFNpemU6IDEzXG4gICAgfSksXG5cbiAgICBQbG90LnRleHQoW3t4OiA1LjAsIHk6IDE4LCBsYWJlbDogXCLiiJIgUksgRU9TXCJ9XSwge1xuICAgICAgeDogXCJ4XCIsXG4gICAgICB5OiBcInlcIixcbiAgICAgIHRleHQ6IFwibGFiZWxcIixcbiAgICAgIGZpbGw6IFwicHVycGxlXCIsXG4gICAgICBmb250U2l6ZTogMTNcbiAgICB9KSxcblxuICAgIFBsb3QudGV4dChbe3g6IDUuMCwgeTogMTEsIGxhYmVsOiBcIi0tIFZMRSBkb21lXCJ9XSwge1xuICAgICAgeDogXCJ4XCIsXG4gICAgICB5OiBcInlcIixcbiAgICAgIHRleHQ6IFwibGFiZWxcIixcbiAgICAgIGZpbGw6IFwiYmxhY2tcIixcbiAgICAgIGZvbnRTaXplOiAxM1xuICAgIH0pXG4gIF1cbn0pXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ1RfQycpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdhJykifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ2InKSJ9XX0=
+</script>
+<script type="module">
+if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+window._ojs.paths.runtimeToDoc = "../../lectures/lecture-2";
+window._ojs.paths.runtimeToRoot = "../..";
+window._ojs.paths.docToRoot = "../..";
+window._ojs.selfContained = false;
+window._ojs.runtime.interpretFromScriptTags();
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

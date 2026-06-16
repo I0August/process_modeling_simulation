@@ -18,7 +18,7 @@ By the end of this lecture, students should be able to:
 
 ## 1. Thermodynamic properties
 
-Thermodynamics is a macroscopic science. It describes how observable properties of a system change and determines the direction of processes, equilibrium states, and energy exchanges without referring explicitly to individual molecules.
+Thermodynamics is a **macroscopic** science. It describes how observable properties of a system change and determines the direction of processes, equilibrium states, and energy exchanges without referring explicitly to individual molecules.
 
 The main thermodynamic properties used are summarized below.
 
@@ -105,7 +105,7 @@ $$
 
 This value of $\Delta X$ is the same for **any** path connecting state 1 and state 2, whether the path is reversible, irreversible, fast, slow, or otherwise.
 
-![State function: the change in a thermodynamic property depends only on the initial and final states, not on the path.](images/state_function_1.png){width="40%" fig-align="center"}
+![State function: the change in a thermodynamic property depends only on the initial and final states, not on the path.](images/state_function_1.png){#fig-state-function width="40%" fig-align="center"}
 
 Graphically, for a state function $X$, we have
 
@@ -115,7 +115,7 @@ $$
 
 Around any closed cycle, the system returns to the same state. Therefore, the value of the state function also returns to its original value.
 
-![For a closed cycle, the change in a state function is zero.](images/state_function_2.png){width="40%" fig-align="center"}
+![For a closed cycle, the change in a state function is zero.](images/state_function_2.png){#fig-closed-cycle width="40%" fig-align="center"}
 
 ::: {.callout-note}
 ## Why are state functions important for process modeling?
@@ -176,7 +176,7 @@ It is important to check the reference state when using values of thermodynamic 
 
 ### 4.1 Internal energy $U$
 
-Internal energy is the macroscopic energy that reflects the microscopic contributions of molecules. These contributions include primarily the kinetic energy of molecular motion, such as translation, rotation, and vibration, and the potential energy associated with intermolecular forces and chemical bonding.
+Internal energy is the **macroscopic** energy that reflects the microscopic contributions of molecules. These contributions include primarily the kinetic energy of molecular motion, such as translation, rotation, and vibration, and the potential energy associated with intermolecular forces and chemical bonding.
 
 ### 4.2 Enthalpy $H$
 
@@ -188,7 +188,7 @@ $$
 H = U + PV, \qquad h = u + Pv.
 $$
 
-![Enthalpy appears naturally in the energy balance.](images/enthalpy.png){width="70%" fig-align="center"}
+![Enthalpy appears naturally in the energy balance.](images/enthalpy.png){#fig-enthalpy width="70%" fig-align="center"}
 
 Mixing, reaction, and phase-change processes are often analyzed at constant pressure. Under this condition, the heat released or absorbed by the process is equal to the enthalpy change. This is why heats of mixing, heats of reaction, and latent heats of phase change are commonly reported as enthalpy changes:
 
@@ -208,13 +208,13 @@ Entropy is also closely linked to thermodynamic equilibrium. For an isolated sys
 
 Gibbs free energy $G(P,T,{n_k})$, or molar Gibbs free energy $g(P,T,{z_k})$, is named in honour of Josiah Willard Gibbs (1839--1903), an American scientist who developed statistical mechanics and laid the foundations of modern chemical thermodynamics and the Gibbs free energy concept.
 
-![Josiah Willard Gibbs](images/Gibbs.png){width="25%" fig-align="center"}
+![Josiah Willard Gibbs](images/Gibbs.png){#fig-gibbs width="25%" fig-align="center"}
 
 The change in Gibbs free energy, $G - G_{\mathrm{min}}$, represents the maximum portion of a system’s energy that is available to do useful **non-$PV$ work** at constant $T$ and $P$. Examples include electrical work in a fuel cell, chemical reactions, and phase changes. This is why it is called a “free” energy.
 
 Thus, $G$ is the energy available to drive reactions, phase changes, mass transfer, and other material transformations at constant $T$ and $P$. This driving force is exhausted when $G$ reaches its minimum value, $G_{\mathrm{min}}$.
 
-![Decomposition of a system energy into $TS$, $-PV$, and $G$, and their physical interpretations.](images/G.png){width="65%" fig-align="center"}
+![Decomposition of a system energy into $TS$, $-PV$, and $G$, and their physical interpretations.](images/G.png){#fig-g-decomp width="65%" fig-align="center"}
 
 #### Application 1: Criterion for spontaneity and material equilibrium
 
